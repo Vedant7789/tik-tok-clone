@@ -1,43 +1,59 @@
-"use client"
+"use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { account, ID } from "@/libs/AppWriteClient"
-import { User, UserContextTypes } from '../types';
-import { useRouter } from 'next/navigation';
-import useGetProfileByUserId from '../hooks/useGetProfileByUserId';
-import useCreateProfile from '../hooks/useCreateProfile';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { account, ID } from "@/libs/AppWriteClient";
+import { User, UserContextTypes } from "../types";
+import { useRouter } from "next/navigation";
+import { useGetProfileByUserId } from "../hooks/profile/index";
+import { useCreateProfile } from "../hooks/profile/index";
 
 const UserContext = createContext<UserContextTypes | null>(null);
 
 const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const router = useRouter()
+  const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
 
   const checkUser = async () => {
     try {
       const currentSession = await account.getSession("current");
-      if (!currentSession) return
+      if (!currentSession) return;
 
-      const promise = await account.get() as any
-      const profile = await useGetProfileByUserId(promise?.$id)
+      const promise = (await account.get()) as any;
+      const profile = await useGetProfileByUserId(promise?.$id);
 
-      setUser({ id: promise?.$id, name: promise?.name,  bio: profile?.bio, image: profile?.image });
+      setUser({
+        id: promise?.$id,
+        name: promise?.name,
+        bio: profile?.bio,
+        image: profile?.image,
+      });
     } catch (error) {
       setUser(null);
     }
   };
 
-  useEffect(() => { checkUser() }, []);
+  useEffect(() => {
+    checkUser();
+  }, []);
 
   const register = async (name: string, email: string, password: string) => {
-
     try {
-      const promise = await account.create(ID.unique(), email, password, name)
+      const promise = await account.create(ID.unique(), email, password, name);
       await account.createEmailSession(email, password);
 
-      await useCreateProfile(promise?.$id, name, String(process.env.NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID), '')
-      await checkUser() 
-
+      await useCreateProfile(
+        promise?.$id,
+        name,
+        String(process.env.NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID),
+        ""
+      );
+      await checkUser();
     } catch (error) {
       console.error(error);
       throw error;
@@ -55,21 +71,21 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const logout = async () => {
     try {
-      await account.deleteSession('current');
+      await account.deleteSession("current");
       setUser(null);
-      router.refresh()
+      router.refresh();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-      <UserContext.Provider value={{ user, register, login, logout, checkUser }}>
-          {children}
-      </UserContext.Provider>
+    <UserContext.Provider value={{ user, register, login, logout, checkUser }}>
+      {children}
+    </UserContext.Provider>
   );
 };
 
 export default UserProvider;
 
-export const useUser = () => useContext(UserContext)
+export const useUser = () => useContext(UserContext);

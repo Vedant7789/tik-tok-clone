@@ -5,7 +5,7 @@ import { BiLoaderCircle } from "react-icons/bi"
 import { BsTrash3 } from "react-icons/bs"
 import { useCommentStore } from "@/app/stores/comment"
 import moment from "moment"
-import useDeleteComment from "@/app/hooks/useDeleteComment"
+import {useDeleteComment} from "@/app/hooks/comments/index"
 import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl"
 import { SingleCommentCompTypes } from "@/app/types"
 

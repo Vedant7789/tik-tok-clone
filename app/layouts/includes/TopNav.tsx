@@ -11,8 +11,7 @@ import { useUser } from "@/app/context/user";
 import { useGeneralStore } from "@/app/stores/general";
 import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl";
 import { RandomUsers } from "@/app/types";
-import useSearchProfilesByName from "@/app/hooks/useSearchProfilesByName";
-import dynamic from "next/dynamic";
+import { useSearchProfilesByName } from "@/app/hooks/profile/index";
 import { useModalStore } from "@/app/stores/modal";
 import { useWallet } from "@meshsdk/react";
 
