@@ -75,9 +75,9 @@ export default function Register() {
     return (
         <>
             <div>
-                <h1 className="text-center text-[28px] mb-4 font-bold">Register</h1>
+                <h1 className="text-center text-[28px] mb-6 font-bold">Register</h1>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-4">
 
                     <TextInput 
                         string={name}
@@ -89,7 +89,7 @@ export default function Register() {
                     
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-4">
 
                     <TextInput 
                         string={email}
@@ -101,7 +101,7 @@ export default function Register() {
                     
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-4">
                     <TextInput 
                         string={password}
                         placeholder="Password"
@@ -111,7 +111,7 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="px-6 pb-2">
+                <div className="px-6 pb-4">
                     <TextInput 
                         string={confirmPassword}
                         placeholder="Confirm Password"
@@ -123,11 +123,10 @@ export default function Register() {
 
                 <div className="px-6 pb-2 mt-6">
                     <button 
-                        disabled={loading}
+                        disabled={loading || !name || !email || !password || !confirmPassword}
                         onClick={() => register()} 
                         className={`
-                            flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm
-                            ${(!name || !email || !password || !confirmPassword) ? 'bg-gray-200' : 'bg-[#F02C56]'}
+                            flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm bg-[#F02C56] disabled:cursor-not-allowed disabled:opacity-50
                         `}
                     >
                         {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Register'}

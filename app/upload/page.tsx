@@ -80,7 +80,7 @@ export default function Upload() {
     return (
         <>
             <UploadLayout>
-                <div className="w-full mt-[80px] mb-[40px] bg-white shadow-lg rounded-md py-6 md:px-10 px-4">
+                <div className="w-full mt-[40px] mb-[40px] bg-[#121316] shadow-lg rounded-xl py-6 md:px-10 px-4">
                     <div>
                         <h1 className="text-[23px] font-semibold">Upload video</h1>
                         <h2 className="text-gray-400 mt-1">Post a video to your account</h2>
@@ -109,7 +109,7 @@ export default function Upload() {
                                     border-dashed 
                                     border-gray-300 
                                     rounded-lg 
-                                    hover:bg-gray-100 
+                                    hover:bg-white/10 
                                     cursor-pointer
                                 "
                             >
@@ -193,7 +193,7 @@ export default function Upload() {
 
 
                         <div className="mt-4 mb-6">
-                            <div className="flex bg-[#F8F8F8] py-4 px-6">
+                            <div className="flex bg-black/40 py-4 px-6">
                                 <div>
                                     <PiKnifeLight className="mr-4" size="20"/>
                                 </div>
@@ -218,12 +218,15 @@ export default function Upload() {
                                 <input 
                                     maxLength={150}
                                     type="text"
+                                    placeholder="Write your caption here . . ."
                                     className="
                                         w-full
                                         border
+                                        bg-[#121316]
                                         p-2.5
                                         rounded-md
                                         focus:outline-none
+                                        placeholder:opacity-50
                                     "
                                     value={caption}
                                     onChange={event => setCaption(event.target.value)}
@@ -234,7 +237,7 @@ export default function Upload() {
                                 <button 
                                     disabled={isUploading}
                                     onClick={() => discard()}
-                                    className="px-10 py-2.5 mt-8 border text-[16px] hover:bg-gray-100 rounded-sm"
+                                    className="px-10 py-2.5 mt-8 border text-[16px] hover:bg-white/10 rounded-sm"
                                 >
                                     Discard
                                 </button>

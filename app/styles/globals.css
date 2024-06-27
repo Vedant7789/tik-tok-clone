@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("custom-scrollbar.css");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 500;
+  background: linear-gradient(
+    129.62deg,
+    #01020d 35.39%,
+    #000113 61.07%,
+    #000000 91.41%
+  ) !important;
+  background: black;
+  color: #fff;
+}

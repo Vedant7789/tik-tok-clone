@@ -20,7 +20,7 @@ import useDeleteLike from "@/app/hooks/useDeleteLike"
 import useDeletePostById from "@/app/hooks/useDeletePostById"
 import { CommentsHeaderCompTypes } from "@/app/types"
 
-export default function CommentsHeader({ post, params }: CommentsHeaderCompTypes) {
+export default function     CommentsHeader({ post, params }: CommentsHeaderCompTypes) {
 
     let { setLikesByPost, likesByPost } = useLikeStore()
     let { commentsByPost, setCommentsByPost } = useCommentStore()
@@ -158,7 +158,7 @@ export default function CommentsHeader({ post, params }: CommentsHeaderCompTypes
                         <button 
                             disabled={hasClickedLike}
                             onClick={() => likeOrUnlike()} 
-                            className="rounded-full bg-gray-200 p-2 cursor-pointer"
+                            className="rounded-full bg-gray-300/10 p-2 cursor-pointer"
                         >
                             {!hasClickedLike ? (
                                 <AiFillHeart color={likesByPost.length > 0 && userLiked ? '#ff2626' : ''} size="25"/>
@@ -166,17 +166,17 @@ export default function CommentsHeader({ post, params }: CommentsHeaderCompTypes
                                 <BiLoaderCircle className="animate-spin" size="25"/>
                             )}
                         </button>
-                        <span className="text-xs pl-2 pr-4 text-gray-800 font-semibold">
+                        <span className="text-xs pl-2 pr-4 text-gray-300 font-semibold">
                             {likesByPost.length}
                         </span>
                     </div>
                 </ClientOnly>
 
                 <div className="pb-4 text-center flex items-center">
-                    <div className="rounded-full bg-gray-200 p-2 cursor-pointer">
+                    <div className="rounded-full bg-gray-300/10 p-2 cursor-pointer">
                         <BsChatDots size={25} />
                     </div>
-                    <span className="text-xs pl-2 text-gray-800 font-semibold">{commentsByPost?.length}</span>
+                    <span className="text-xs pl-2 text-gray-300 font-semibold">{commentsByPost?.length}</span>
                 </div>
             </div>
         </>

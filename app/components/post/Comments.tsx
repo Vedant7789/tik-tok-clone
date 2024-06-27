@@ -37,7 +37,7 @@ export default function Comments({ params }: CommentsCompTypes) {
         <>
             <div 
                 id="Comments" 
-                className="relative bg-[#F8F8F8] z-0 w-full h-[calc(100%-273px)] border-t-2 overflow-auto"
+                className="relative bg-black/30 z-0 w-full h-[calc(100%-273px)] border-t border-gray-300/30 overflow-auto"
             >
    
                 <div className="pt-2"/>
@@ -60,12 +60,12 @@ export default function Comments({ params }: CommentsCompTypes) {
 
             <div 
                 id="CreateComment" 
-                className="absolute flex items-center justify-between bottom-0 bg-white h-[85px] lg:max-w-[550px] w-full py-5 px-8 border-t-2"
+                className="absolute flex items-center justify-between bottom-0 bg-[#121316] h-[85px] lg:max-w-[550px] w-full py-5 px-8 border-t border-gray-300/30"
             >
                 <div 
                     className={`
-                        bg-[#F1F1F2] flex items-center rounded-lg w-full lg:max-w-[420px]
-                        ${inputFocused ? 'border-2 border-gray-400' : 'border-2 border-[#F1F1F2]'}
+                        bg-black/40 flex items-center rounded-lg w-full lg:max-w-[420px]
+                        ${inputFocused ? 'border border-gray-300' : 'border border-gray-300/30'}
                     `}
                 >
                     <input 
@@ -73,7 +73,7 @@ export default function Comments({ params }: CommentsCompTypes) {
                         onBlur={() => setInputFocused(false)}
                         onChange={e => setComment(e.target.value)}
                         value={comment || ''}
-                        className="bg-[#F1F1F2] text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg" 
+                        className="bg-transparent text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg" 
                         type="text"
                         placeholder="Add comment..."
                     />

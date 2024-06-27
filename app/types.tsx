@@ -145,7 +145,7 @@ export interface TextInputCompTypes {
 // LAYOUT INCLUDE TYPES
 export interface MenuItemTypes {
     iconString: string,
-    colorString: string,
+    colorString?: string,
     sizeString: string
 }
 

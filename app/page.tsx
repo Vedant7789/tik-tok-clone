@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <MainLayout>
-        <div className="mt-[80px]  w-[calc(100%-90px)] max-w-[690px] ml-auto">
+        <div className="relative w-auto h-full rounded-xl flex-1 md:px-12 flex flex-col overflow-hidden">
           <ClientOnly>
             {allPosts.map((post, index) => (
               <PostMain post={post} key={index} />

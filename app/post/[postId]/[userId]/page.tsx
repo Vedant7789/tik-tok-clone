@@ -8,7 +8,7 @@ import { AiOutlineClose } from "react-icons/ai"
 import { BiChevronDown, BiChevronUp } from "react-icons/bi"
 import { useRouter } from "next/navigation"
 import ClientOnly from "@/app/components/ClientOnly"
-import { Post, PostPageTypes } from "@/app/types"
+import { type Post, PostPageTypes } from "@/app/types"
 import { usePostStore } from "@/app/stores/post"
 import { useLikeStore } from "@/app/stores/like"
 import { useCommentStore } from "@/app/stores/comment"
@@ -49,12 +49,12 @@ export default function Post({ params }: PostPageTypes) {
         <>
             <div 
                 id="PostPage" 
-                className="lg:flex justify-between w-full h-screen bg-black overflow-auto"
+                className="w-full h-screen fixed left-0 top-0 z-[0] flex justify-center items-center bg-[#000]/60 backdrop-blur-lg"
             >
                 <div className="lg:w-[calc(100%-540px)] h-full relative">
                     <Link
                         href={`/profile/${params?.userId}`}
-                        className="absolute text-white z-20 m-5 rounded-full bg-gray-700 p-1.5 hover:bg-gray-800"
+                        className="absolute text-white z-20 m-5 rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
                     >
                         <AiOutlineClose size="27"/>
                     </Link>
@@ -62,14 +62,14 @@ export default function Post({ params }: PostPageTypes) {
                     <div >
                         <button 
                             onClick={() => loopThroughPostsUp()}
-                            className="absolute z-20 right-4 top-4 flex items-center justify-center rounded-full bg-gray-700 p-1.5 hover:bg-gray-800"
+                            className="absolute z-20 right-4 top-4 flex items-center justify-center rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
                         >
                             <BiChevronUp size="30" color="#FFFFFF"/>
                         </button>
 
                         <button  
                             onClick={() => loopThroughPostsDown()}
-                            className="absolute z-20 right-4 top-20 flex items-center justify-center rounded-full bg-gray-700 p-1.5 hover:bg-gray-800"
+                            className="absolute z-20 right-4 top-20 flex items-center justify-center rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
                         >
                             <BiChevronDown size="30" color="#FFFFFF"/>
                         </button>
@@ -105,7 +105,7 @@ export default function Post({ params }: PostPageTypes) {
 
                 </div>
 
-                <div id="InfoSection" className="lg:max-w-[550px] relative w-full h-full bg-white">
+                <div id="InfoSection" className="lg:max-w-[550px] relative w-full h-full bg-[#121316] text-white">
                     <div className="py-7" />
 
                         <ClientOnly>

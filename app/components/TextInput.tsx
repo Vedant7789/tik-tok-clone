@@ -9,10 +9,10 @@ export default function TextInput({ string, inputType, placeholder, error, onUpd
             className="
                 block
                 w-full
-                bg-[#F1F1F2]
-                text-gray-800
+                bg-black/40
+                text-gray-300
                 border
-                border-gray-300
+                border-gray-300/30
                 rounded-md
                 py-2.5
                 px-3
