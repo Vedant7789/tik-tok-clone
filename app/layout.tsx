@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { ConnectModal } from "@/app/components/ConnectModal";
 import { useModalStore } from "@/app/stores/modal";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "TikTok Clone",
   description: "TikTok Clone",
 };
