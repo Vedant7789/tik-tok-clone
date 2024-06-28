@@ -5,6 +5,7 @@ import { ShowErrorObject } from "@/app/types";
 import { useUser } from "@/app/context/user";
 import { BiLoaderCircle } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import useKeyPress from "@/app/hooks/useKeyPress";
 
 export default function Register() {
     let { setIsLoginOpen } = useGeneralStore();
@@ -71,6 +72,11 @@ export default function Register() {
             alert(error)
         }
     }
+
+    // Use Ctrl + Enter for register
+    // useKeyPress(register, "Control", "Enter");
+
+    useKeyPress(register, "Enter");
 
     return (
         <>
