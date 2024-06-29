@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@meshsdk/core": "^1.5.25",
-    "@meshsdk/react": "^1.1.12",
+    "@meshsdk/core": "github:stargazerlabs/mesh-core",
+    "@meshsdk/react": "github:stargazerlabs/mesh-react",
     "@supabase/supabase-js": "^2.44.2",
     "@types/node": "20.5.1",
     "@types/react": "18.2.20",

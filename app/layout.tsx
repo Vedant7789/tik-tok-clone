@@ -23,28 +23,6 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const { showConnectModal, setLoading, setWalletConnected, walletConnected } = useAppStore();
-    const { connect } = useWallet();
-
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                setLoading(true);
-                const walletName = localStorage.getItem("wallet_name" ?? "");
-                if (walletName) {
-                    setWalletConnected(true);
-                    connect(walletName);
-                    success(`Connected wallet to ${walletName}!`);
-                }
-            } catch (error) {
-                console.error('Error in connecting wallet:', error);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        getData();
-    }, [walletConnected]);
 
     return (
         <html lang="en">
@@ -54,7 +32,6 @@ export default function RootLayout({
                         <AllOverlays />
                         {children}
                         <ToastContainer position="top-center" theme="dark" style={{ minWidth: "400px" }} />
-                        {showConnectModal && <ConnectModal />}
                     </body>
                 </UserProvider>
             </MeshProvider>
