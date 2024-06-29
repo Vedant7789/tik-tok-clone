@@ -11,6 +11,20 @@ export default function Home() {
   useEffect(() => { setAllPosts()}, [])
   return (
     <>
+      <meta name="description" content={"99pitch"} />
+      {/* <link rel="icon" href="" /> */}
+
+      {/* <meta property="og:url" content="" /> */}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={"99pitch"} />
+      <meta property="og:description" content={"99pitch"} />
+      {/* <meta property="og:image" content={""} /> */}
+
+      {/* <meta name="twitter:card" content={""} /> */}
+      {/* <meta property="twitter:domain" content="" /> */}
+      {/* <meta property="twitter:url" content="" /> */}
+      <meta name="twitter:title" content={"99pitch"} />
+      <meta name="twitter:description" content={"99pitch"} />
       <MainLayout>
         <div className="relative w-auto h-full rounded-xl flex-1 md:px-12 flex flex-col overflow-hidden">
           <ClientOnly>
