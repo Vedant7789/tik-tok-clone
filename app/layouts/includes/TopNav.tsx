@@ -63,8 +63,9 @@ export default function TopNav() {
             pathname === "/" ? "" : ""
           }`}
         >
-          <Link href="/">
-            <img className="min-w-[115px] w-[115px]" src="/images/logo.png" />
+          <Link className="min-w-[115px] font-neue-regular text-4xl" href="/">
+            {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
+            99pitch
           </Link>
 
           <div className="relative hidden md:flex items-center justify-end bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">
