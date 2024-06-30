@@ -26,7 +26,7 @@ export default function Home() {
       <meta name="twitter:title" content={"99pitch"} />
       <meta name="twitter:description" content={"99pitch"} />
       <MainLayout>
-        <div className="relative w-auto h-full rounded-xl flex-1 md:px-12 flex flex-col overflow-hidden">
+        <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 flex flex-col overflow-hidden">
           <ClientOnly>
             {allPosts.map((post, index) => (
               <PostMain post={post} key={index} />

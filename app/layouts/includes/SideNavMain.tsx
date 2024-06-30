@@ -20,7 +20,7 @@ export default function SideNavMain() {
     <>
       <div
         id="SideNavMain"
-        className={`flex sticky top-[100px] ${
+        className={`hidden sm:flex sticky top-[100px] ${
           pathname ? "lg:w-[310px]" : "w-[220px]"
         } flex flex-col border border-[#FFFFFF12] lg:border-r-0 border-r rounded-[20px] bg-[#121316]  [&::-webkit-scrollbar]:hidden p-3`}
       >
