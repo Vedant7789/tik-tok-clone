@@ -50,3 +50,10 @@
 .Toastify__progress-bar {
     border-radius: 10px !important;
 }
+
+@media screen and (max-width: 768px) {
+    .Toastify__toast-container {
+        width: 100vw !important;
+        min-width: auto !important;
+    }
+}

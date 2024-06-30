@@ -5,7 +5,7 @@ import { BiSearch, BiUser } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CiWallet } from "react-icons/ci";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useUser } from "@/app/context/user";
 import { useGeneralStore } from "@/app/stores/general";
@@ -16,6 +16,7 @@ import { useModalStore } from "@/app/stores/modal";
 import { useWallet } from "@meshsdk/react";
 import { useAppStore } from "@/app/stores";
 import { VscDebugDisconnect } from "react-icons/vsc";
+import { MdUpload } from "react-icons/md";
 
 export default function TopNav() {
     const userContext = useUser();
@@ -62,29 +63,28 @@ export default function TopNav() {
         router.push("/upload");
     };
 
-  return (
-    <>
-      <div
-        id="TopNav"
-        className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8 font-neue-regular tracking-wide"
-      >
-        <div
-          className={`relative flex h-20 w-full items-center justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${
-            pathname === "/" ? "" : ""
-          }`}
-        >
-          <Link className="min-w-[115px] font-neue-regular text-4xl md:flex-1 md:w-full" href="/">
-            {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
-            99pitch
-          </Link>
+    return (
+        <>
+            <div
+                id="TopNav"
+                className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8 font-neue-regular tracking-wide"
+            >
+                <div
+                    className={`relative flex h-20 w-full items-center justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${pathname === "/" ? "" : ""
+                        }`}
+                >
+                    <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full" href="/">
+                        {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
+                        99pitch
+                    </Link>
 
-          <div className=" md:flex-1 md:w-full md:self-center relative hidden md:flex items-center justify-end md:justify-center bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">
-            <input
-              type="text"
-              onChange={handleSearchName}
-              className="w-full pl-3 my-2 bg-transparent placeholder-[#838383] text-[15px] focus:outline-none "
-              placeholder="Search accounts"
-            />
+                    <div className=" md:flex-1 md:w-full md:self-center relative hidden md:flex items-center justify-end md:justify-center bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">
+                        <input
+                            type="text"
+                            onChange={handleSearchName}
+                            className="w-full pl-3 my-2 bg-transparent placeholder-[#838383] text-[15px] focus:outline-none "
+                            placeholder="Search accounts"
+                        />
 
                         {searchProfiles.length > 0 ? (
                             <div className="absolute bg-black/50 max-w-[910px] h-auto w-full z-20 left-0 top-12 border border-white/30 p-1">
@@ -113,63 +113,57 @@ export default function TopNav() {
                         </div>
                     </div>
 
-          <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
-            <button
-              onClick={() => goTo()}
-              className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5 font-offbit-101-bold tracking-widest "
-              style={{fontVariant: "small-caps"}}
-            >
-              <AiOutlinePlus size="22" />
-              <span className="px-2 font-medium text-[15px] translate-y-[1.5px]">Upload</span>
-            </button>
-            <button
-              onClick={() => toggleConnectModal(true)}
-              className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 hover:text-white pl-1.5 ${
-                connected && "bg-[white] text-black"
-              } transition-[background] font-offbit-101-bold tracking-widest`}
-              style={{fontVariant: "small-caps"}}
-            >
-              <span className="px-2 flex gap-1  font-medium text-[15px] translate-y-[1.5px]">
-                {connected ? (
-                  "Connected"
-                ) : (
-                  <>
-                    Connect <CiWallet size={22} />
-                  </>
-                )}
-              </span>
-            </button>
-            {
-                connected && <button
-                onClick={disconnectWallet}
-                className={`flex items-center border rounded-sm py-[6px] text-white p-2 text-xl hover:bg-white/30 transition-all duration-200 `}
-              >
-                <VscDebugDisconnect />
-              </button>
-            }
-            {!userContext?.user?.id ? (
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={() => setIsLoginOpen(true)}
-                  className="flex items-center bg-[#fff] text-black py-[6px]  px-3 border "
-                >
-                  <span className="whitespace-nowrap mx-4 font-medium text-[15px]">
-                    Log in
-                  </span>
-                </button>
-              </div>
-            ) : (
-              <div className="flex items-center">
-                <div className="relative">
-                  <button
-                    onClick={() => setShowMenu((showMenu = !showMenu))}
-                    className="mt-1 border border-gray-200 rounded-full"
-                  >
-                    <img
-                      className="rounded-full w-[35px] h-[35px]"
-                      src={useCreateBucketUrl(userContext?.user?.image || "")}
-                    />
-                  </button>
+                    <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
+                        <button
+                            onClick={() => goTo()}
+                            className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 px-1.5 md:pr-0 md:pl-1.5 font-offbit-101-bold tracking-widest "
+                            style={{ fontVariant: "small-caps" }}
+                        >
+                            <MdUpload size="22" />
+                            <span className="px-2 font-medium text-[15px] translate-y-[1.5px] hidden md:block">Upload</span>
+                        </button>
+                        <button
+                            onClick={() => toggleConnectModal(true)}
+                            className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 hover:text-white md:pl-1.5 ${connected && "bg-[white] text-black"
+                                } transition-[background] font-offbit-101-bold tracking-widest`}
+                            style={{ fontVariant: "small-caps" }}
+                        >
+                            <span className="px-2 flex gap-1  font-medium text-[15px] translate-y-[1.5px]">
+                                <span className="hidden md:block">{connected ? "Connected" : "Connect"}</span> <CiWallet size={22} />
+                            </span>
+                        </button>
+                        {
+                            connected && <button
+                                onClick={disconnectWallet}
+                                className={`flex items-center border rounded-sm py-[6px] text-white p-2 text-xl hover:bg-white/30 transition-all duration-200 `}
+                            >
+                                <VscDebugDisconnect />
+                            </button>
+                        }
+                        {!userContext?.user?.id ? (
+                            <div className="flex items-center gap-4">
+                                <button
+                                    onClick={() => setIsLoginOpen(true)}
+                                    className="flex items-center bg-[#fff] text-black py-[6px]  px-3 border "
+                                >
+                                    <FiLogIn size={22} />
+                                    <span className="hidden md:block whitespace-nowrap mx-4 font-medium text-[15px]">
+                                        Log in
+                                    </span>
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex items-center">
+                                <div className="relative">
+                                    <button
+                                        onClick={() => setShowMenu((showMenu = !showMenu))}
+                                        className="mt-1 border border-gray-200 rounded-full"
+                                    >
+                                        <img
+                                            className="rounded-full w-[35px] h-[35px]"
+                                            src={useCreateBucketUrl(userContext?.user?.image || "")}
+                                        />
+                                    </button>
 
                                     {showMenu ? (
                                         <div className="absolute bg-[#121316] rounded-lg w-[120px] shadow-xl border border-gray-300/30 top-[60px] right-0">
