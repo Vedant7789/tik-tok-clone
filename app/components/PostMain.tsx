@@ -28,27 +28,28 @@ export default function PostMain({ post }: PostMainCompTypes) {
         <>
             <div id={`PostMain-${post.id}`} className="flex border-b py-6">
 
-                <div className="cursor-pointer">
-                    <img className="rounded-full max-h-[60px]" width="60" src={useCreateBucketUrl(post?.profile?.image)} />
-                </div>
 
                 <div className="pl-3 w-full px-4 font-neue-regular ">
                     <div className="flex items-center justify-between pb-0.5">
+                        <div className="flex items-center gap-2">
+                        <div className="cursor-pointer">
+                            <img className="rounded-full max-h-[60px]" width="60" src={useCreateBucketUrl(post?.profile?.image)} />
+                        </div>
                         <Link href={`/profile/${post.profile.user_id}`}>
                             <span className="font-bold hover:underline cursor-pointer">
                                 {post.profile.name}
                             </span>
                         </Link>
-
+                        </div>
                         <div className="flex gap-4 items-center">
                             
-                            <button className="text-[15px] px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
+                            <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                 <MdWhereToVote className="-translate-y-[3px]" />
-                                Proposal
+                                <span className="hidden sm:inline-block">Proposal</span>
                             </button>
-                            <button className="text-[15px] px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
+                            <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                 <MdWhereToVote className="-translate-y-[3px]" />
-                                Profile
+                                <span className="hidden sm:inline-block">Profile</span>
                             </button>
                         </div>
 
@@ -63,7 +64,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
 
                     <div className="mt-2.5 relative justify-center flex">
                         <div
-                            className="relative min-h-[480px] max-h-[580px] max-w-[260px] flex items-center bg-black rounded-xl cursor-pointer"
+                            className="relative aspect-[260/480] w-full min-w-[300px] max-w-[450px] flex items-center bg-black rounded-xl cursor-pointer"
                         >
                             <video 
                                 id={`video-${post.id}`}
