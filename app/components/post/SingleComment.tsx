@@ -43,9 +43,9 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
                     <div className="ml-14 pt-0.5 w-full">
 
                         <div className="text-[18px] font-semibold flex items-center justify-between">
-                            <span className="flex items-center">
+                            <span className="flex items-center font-neue-regular text-base">
                                 {comment?.profile?.name} - 
-                                <span className="text-[12px] text-gray-600 font-light ml-1">
+                                <span className="text-[12px] text-gray-600 font-light ml-1 font-helvetica-light">
                                     {moment(comment?.created_at).calendar()}
                                 </span>
                             </span>
@@ -63,7 +63,7 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
                             ) : null}
                         </div>
                         
-                        <p className="text-[15px] font-light">{comment.text}</p>
+                        <p className="text-[15px] font-light font-helvetica-light">{comment.text}</p>
 
                     </div>
                 </div>

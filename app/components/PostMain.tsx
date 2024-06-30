@@ -7,6 +7,7 @@ import { useEffect } from "react"
 import PostMainLikes from "./PostMainLikes"
 import useCreateBucketUrl from "../hooks/useCreateBucketUrl"
 import { PostMainCompTypes } from "../types"
+import { MdWhereToVote } from "react-icons/md"
 
 export default function PostMain({ post }: PostMainCompTypes) {
 
@@ -31,7 +32,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                     <img className="rounded-full max-h-[60px]" width="60" src={useCreateBucketUrl(post?.profile?.image)} />
                 </div>
 
-                <div className="pl-3 w-full px-4">
+                <div className="pl-3 w-full px-4 font-neue-regular ">
                     <div className="flex items-center justify-between pb-0.5">
                         <Link href={`/profile/${post.profile.user_id}`}>
                             <span className="font-bold hover:underline cursor-pointer">
@@ -39,9 +40,18 @@ export default function PostMain({ post }: PostMainCompTypes) {
                             </span>
                         </Link>
 
-                        <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] text-[#F02C56] hover:bg-[#ffeef2] font-semibold rounded-md">
-                            Follow
-                        </button>
+                        <div className="flex gap-4 items-center">
+                            
+                            <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] text-[#F02C56] hover:bg-[#ffeef2] font-semibold rounded-md font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1">
+                                <MdWhereToVote className="-translate-y-[3px]" />
+                                Proposal
+                            </button>
+                            <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] bg-[#F02C56] text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold rounded-md font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1">
+                                <MdWhereToVote className="-translate-y-[3px]" />
+                                Profile
+                            </button>
+                        </div>
+
                     </div>
                     <p className="text-[15px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p>
                     {/* <p className="text-[14px] text-gray-500 pb-0.5">#fun #cool #SuperAwesome</p> */}

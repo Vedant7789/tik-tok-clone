@@ -17,8 +17,8 @@ export default function MenuItemFollow({ user }: MenuItemFollowCompTypes) {
                     src={useCreateBucketUrl(user?.image)}
                 />
                 <div className="lg:pl-2.5 lg:block hidden">
-                    <div className="flex items-center">
-                        <p className="font-bold text-[14px] truncate">
+                    <div className="flex items-center font-neue-regular tracking-wide">
+                        <p className="font-bold text-[14px] line-clamp-1 max-w-full">
                             {user?.name}
                         </p>
                         <p className="ml-1 rounded-full bg-[#58D5EC] h-[14px] relative">
@@ -26,7 +26,7 @@ export default function MenuItemFollow({ user }: MenuItemFollowCompTypes) {
                         </p>
                     </div>
 
-                    <p className="font-light text-[12px] text-gray-600">
+                    <p className="font-light text-[12px] text-gray-600 ">
                         {user?.name}
                     </p>
                 </div>

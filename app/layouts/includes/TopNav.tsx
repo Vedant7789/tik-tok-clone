@@ -56,7 +56,7 @@ export default function TopNav() {
     <>
       <div
         id="TopNav"
-        className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8"
+        className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8 font-neue-regular tracking-wide"
       >
         <div
           className={`relative flex h-20 w-full items-center justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${
@@ -72,7 +72,7 @@ export default function TopNav() {
             <input
               type="text"
               onChange={handleSearchName}
-              className="w-full pl-3 my-2 bg-transparent placeholder-[#838383] text-[15px] focus:outline-none"
+              className="w-full pl-3 my-2 bg-transparent placeholder-[#838383] text-[15px] focus:outline-none "
               placeholder="Search accounts"
             />
 
@@ -106,18 +106,20 @@ export default function TopNav() {
           <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
             <button
               onClick={() => goTo()}
-              className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5"
+              className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5 font-offbit-101-bold tracking-widest "
+              style={{fontVariant: "small-caps"}}
             >
               <AiOutlinePlus size="22" />
-              <span className="px-2 font-medium text-[15px]">Upload</span>
+              <span className="px-2 font-medium text-[15px] translate-y-[1.5px]">Upload</span>
             </button>
             <button
               onClick={() => toggleConnectModal(true)}
               className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5 ${
                 connected && "bg-[#880FD2]"
-              } transition-[background]`}
+              } transition-[background] font-offbit-101-bold tracking-widest`}
+              style={{fontVariant: "small-caps"}}
             >
-              <span className="px-2 flex gap-1 font-medium text-[15px]">
+              <span className="px-2 flex gap-1  font-medium text-[15px] translate-y-[1.5px]">
                 {connected ? (
                   "Connected"
                 ) : (

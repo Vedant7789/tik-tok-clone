@@ -46,7 +46,7 @@ export default function Comments({ params }: CommentsCompTypes) {
 
                 <ClientOnly>
                     {commentsByPost.length < 1 ? (
-                        <div className="text-center mt-6 text-xl text-gray-500">
+                        <div className="text-center mt-6 text-xl text-gray-500 font-neue-ultra-bold">
                             No comments...
                         </div>
                     ) : (
@@ -79,7 +79,7 @@ export default function Comments({ params }: CommentsCompTypes) {
                         onBlur={() => setInputFocused(false)}
                         onChange={(e) => setComment(e.target.value)}
                         value={comment || ""}
-                        className="bg-transparent text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg"
+                        className="bg-transparent text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg font-helvetica-light"
                         type="text"
                         placeholder="Add comment..."
                     />
@@ -89,7 +89,7 @@ export default function Comments({ params }: CommentsCompTypes) {
                         disabled={!comment}
                         onClick={() => addComment()}
                         className={`
-                            font-semibold text-sm ml-5 pr-1
+                            font-semibold text-sm ml-5 pr-1 font-offbit-101-bold
                             ${comment
                                 ? "text-[#F02C56] cursor-pointer"
                                 : "text-gray-400"

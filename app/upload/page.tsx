@@ -87,11 +87,11 @@ export default function Upload() {
             <UploadLayout>
                 <div className="w-full mt-[40px] mb-[40px] bg-[#121316] shadow-lg rounded-xl py-6 md:px-10 px-4">
                     <div>
-                        <h1 className="text-[23px] font-semibold">Upload video</h1>
-                        <h2 className="text-gray-400 mt-1">Post a video to your account</h2>
+                        <h1 className="text-[23px] font-semibold font-offbit-101-bold tracking-wider">Upload video</h1>
+                        <h2 className="text-gray-400 font-helvetica-light leading-[1] mt-1">Post a video to your account</h2>
                     </div>
 
-                    <div className="mt-8 md:flex gap-6">
+                    <div className="mt-8 md:flex gap-6 font-neue-regular">
                         {!fileDisplay ? (
                             <label
                                 htmlFor="fileInput"
@@ -208,28 +208,7 @@ export default function Upload() {
                             </div>
                         )}
 
-                        <div className="mt-4 mb-6">
-                            <div className="flex bg-black/40 py-4 px-6">
-                                <div>
-                                    <PiKnifeLight className="mr-4" size="20" />
-                                </div>
-                                <div>
-                                    <div className="text-semibold text-[15px] mb-1.5">
-                                        Divide videos and edit
-                                    </div>
-                                    <div className="text-semibold text-[13px] text-gray-400">
-                                        You can quickly divide videos into multiple parts, remove
-                                        redundant parts and turn landscape videos into portrait
-                                        videos
-                                    </div>
-                                </div>
-                                <div className="flex justify-end max-w-[130px] w-full h-full text-center my-auto">
-                                    <button className="px-8 py-1.5 text-white text-[15px] bg-[#F02C56] rounded-sm">
-                                        Edit
-                                    </button>
-                                </div>
-                            </div>
-
+                        <div className="mt-4 mb-6 w-full">
                             <div className="mt-5">
                                 <div className="flex items-center justify-between">
                                     <div className="mb-1 text-[15px]">Caption</div>
@@ -256,7 +235,7 @@ export default function Upload() {
                             </div>
 
                             <div className="mt-5">
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between ">
                                     <div className="mb-1 text-[15px]">Catalyst proposal link</div>
                                 </div>
                                 <input
@@ -276,6 +255,7 @@ export default function Upload() {
                                     onChange={(event) => setCatalystLink(event.target.value)}
                                 />
                             </div>
+
                             <div className="mt-5">
                                 <div className="flex items-center justify-between">
                                     <div className="mb-1 text-[15px]">Profile Link</div>
@@ -302,14 +282,16 @@ export default function Upload() {
                                 <button
                                     disabled={isUploading}
                                     onClick={() => discard()}
-                                    className="px-10 py-2.5 mt-8 border text-[16px] hover:bg-white/10 rounded-sm"
+                                    className="px-10 py-2.5 mt-8 border text-[16px] hover:bg-white/10 rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
                                     Discard
                                 </button>
                                 <button
                                     disabled={isUploading}
                                     onClick={() => createNewPost()}
-                                    className="px-10 py-2.5 mt-8 border text-[16px] text-white bg-[#F02C56] rounded-sm"
+                                    className="px-10 py-2.5 mt-8 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
                                     {isUploading ? (
                                         <BiLoaderCircle

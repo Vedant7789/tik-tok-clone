@@ -132,17 +132,17 @@ export default function CommentsHeader({
           <div className="ml-3 pt-0.5">
             <Link
               href={`/profile/${post?.user_id}`}
-              className="relative z-10 text-[17px] font-semibold hover:underline"
+              className="relative z-10 text-[17px] font-semibold hover:underline font-neue-regular"
             >
               {post?.profile.name}
             </Link>
 
-            <div className="relative z-0 text-[13px] -mt-5 font-light">
+            <div className="relative z-0 text-[13px] -mt-5 font-light font-helvetica-light">
               {post?.profile.name}
-              <span className="relative -top-[2px] text-[30px] pl-1 pr-0.5 ">
+              <span className="relative -top-[3px] text-[30px] pl-1 pr-1 ">
                 .
               </span>
-              <span className="font-medium">
+              <span className="font-medium font-helvetica-bold">
                 {moment(post?.created_at).calendar()}
               </span>
             </div>
@@ -162,16 +162,16 @@ export default function CommentsHeader({
         ) : null}
       </div>
 
-      <p className="px-8 mt-4 text-sm">{post?.text}</p>
+      <p className="px-8 mt-4 text-sm font-offbit-101-bold tracking-widest">{post?.text}</p>
 
-      <p className="flex item-center gap-2 px-8 mt-4 text-sm font-bold">
+      {/* <p className="flex item-center gap-2 px-8 mt-4 text-sm font-bold font-neue-regular">
         <ImMusic size="17" />
-        original sound - {post?.profile.name}
-      </p>
+        {post?.profile.name}
+      </p> */}
 
       <div className="flex items-center px-8 mt-8">
         <ClientOnly>
-          <div className="pb-4 text-center flex items-center">
+          <div className="pb-4 text-center flex items-center font-neue-regular">
             <button
               disabled={hasClickedLike}
               onClick={() => likeOrUnlike()}

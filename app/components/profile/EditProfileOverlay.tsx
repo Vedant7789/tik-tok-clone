@@ -122,7 +122,7 @@ export default function EditProfileOverlay() {
                     className={`relative bg-[#121316] w-full max-w-[700px] sm:h-[580px] h-[655px] mx-3 p-4 rounded-lg`}
                 >
                     <div className="absolute flex items-center justify-between w-full p-5 left-0 top-0 border-b border-b-gray-300/30">
-                        <h1 className="text-[22px] font-medium">Edit profile</h1>
+                        <h1 className="text-[22px] font-medium font-neue-regular tracking-wider">Edit profile</h1>
                         <button
                             disabled={isUpdating}
                             onClick={() => setIsEditProfileOpen(false)}
@@ -142,7 +142,7 @@ export default function EditProfileOverlay() {
                                     id="ProfilePhotoSection"
                                     className="flex flex-col border-b sm:h-[118px] h-[145px] px-1.5 py-2 w-full"
                                 >
-                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center">
+                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center font-helvetica-light tracking-wide">
                                         Profile photo
                                     </h3>
 
@@ -154,7 +154,7 @@ export default function EditProfileOverlay() {
                                                 src={useCreateBucketUrl(userImage)}
                                             />
 
-                                            <button className="absolute bottom-0 right-0 rounded-full bg-white shadow-xl border p-1 border-gray-300 inline-block w-[32px] h-[32px]">
+                                            <button className="absolute bottom-0 right-0 rounded-full bg-white text-black shadow-xl border p-1 border-gray-300 inline-block w-[32px] h-[32px]">
                                                 <BsPencil size="17" className="ml-0.5" />
                                             </button>
                                         </label>
@@ -172,7 +172,7 @@ export default function EditProfileOverlay() {
                                     id="UserNameSection"
                                     className="flex flex-col border-b sm:h-[118px]  px-1.5 py-2 mt-1.5  w-full"
                                 >
-                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center">
+                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center font-helvetica-light tracking-wide">
                                         Name
                                     </h3>
 
@@ -187,7 +187,7 @@ export default function EditProfileOverlay() {
                                             />
 
                                             <p
-                                                className={`relative text-[11px] text-gray-500 ${error ? "mt-1" : "mt-4"
+                                                className={`relative text-[11px] font-helvetica-light tracking-wide text-gray-500 ${error ? "mt-1" : "mt-4"
                                                     }`}
                                             >
                                                 Usernames can only contain letters, numbers,
@@ -202,12 +202,12 @@ export default function EditProfileOverlay() {
                                     id="UserBioSection"
                                     className="flex flex-col sm:h-[120px]  px-1.5 py-2 mt-2 w-full"
                                 >
-                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center">
+                                    <h3 className="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center font-helvetica-light tracking-wide">
                                         Bio
                                     </h3>
 
                                     <div className="flex items-center justify-center sm:-mt-6">
-                                        <div className="sm:w-[60%] w-full max-w-md">
+                                        <div className="sm:w-[60%] w-full max-w-md font-neue-regular tracking-wide">
                                             <textarea
                                                 cols={30}
                                                 rows={4}
@@ -242,22 +242,24 @@ export default function EditProfileOverlay() {
                         {!uploadedImage ? (
                             <div
                                 id="UpdateInfoButtons"
-                                className="flex items-center justify-end"
+                                className="flex items-center justify-end gap-4"
                             >
                                 <button
                                     disabled={isUpdating}
                                     onClick={() => setIsEditProfileOpen(false)}
-                                    className="flex items-center border rounded-sm px-3 py-[6px] hover:bg-white/10"
+                                    className="px-5 py-2 border text-[16px] hover:bg-white/10 rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
-                                    <span className="px-2 font-medium text-[15px]">Cancel</span>
+                                    Cancel
                                 </button>
 
                                 <button
                                     disabled={isUpdating}
                                     onClick={() => updateUserInfo()}
-                                    className="flex items-center bg-[#F02C56] text-white border rounded-md ml-3 px-3 py-[6px]"
+                                    className="px-5 py-2 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
-                                    <span className="mx-4 font-medium text-[15px]">
+                                    <span className=" font-medium text-[15px]">
                                         {isUpdating ? (
                                             <BiLoaderCircle
                                                 color="#ffffff"
@@ -272,20 +274,22 @@ export default function EditProfileOverlay() {
                         ) : (
                             <div
                                 id="CropperButtons"
-                                className="flex items-center justify-end"
+                                className="flex items-center justify-end gap-4"
                             >
                                 <button
                                     onClick={() => setUploadedImage(null)}
-                                    className="flex items-center border rounded-sm px-3 py-[6px] hover:bg-gray-100"
+                                    className="px-5 py-2 border text-[16px] hover:bg-white/10 rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
-                                    <span className="px-2 font-medium text-[15px]">Cancel</span>
+                                    Cancel
                                 </button>
 
                                 <button
                                     onClick={() => cropAndUpdateImage()}
-                                    className="flex items-center bg-[#F02C56] text-white border rounded-md ml-3 px-3 py-[6px]"
+                                    className="px-5 py-2 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    style={{fontVariant: "small-caps"}}
                                 >
-                                    <span className="mx-4 font-medium text-[15px]">
+                                    <span className="font-medium text-[15px]">
                                         {isUpdating ? (
                                             <BiLoaderCircle
                                                 color="#ffffff"

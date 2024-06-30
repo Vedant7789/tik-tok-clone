@@ -53,6 +53,8 @@ export interface PostWithProfile {
     user_id: string;
     video_url: string;
     text: string;
+    proposal_link: string;
+    profile_link: string;
     created_at: string;
     profile: {
         user_id: string;

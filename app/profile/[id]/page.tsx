@@ -43,10 +43,10 @@ export default function Profile({ params }: ProfilePageTypes) {
               <ClientOnly>
                 {(currentProfile as User)?.name ? (
                   <div>
-                    <p className="text-[30px] font-bold truncate">
+                    <p className="text-[30px] font-bold truncate font-neue-regular">
                       {currentProfile?.name}
                     </p>
-                    <p className="text-[18px] truncate">
+                    <p className="text-[18px] truncate font-helvetica-light tracking-wide">
                       {currentProfile?.name}
                     </p>
                   </div>
@@ -68,27 +68,31 @@ export default function Profile({ params }: ProfilePageTypes) {
                   <span>Edit profile</span>
                 </button>
               ) : (
-                <button className="flex item-center rounded-md py-1.5 px-8 mt-3 text-[15px] text-white font-semibold bg-[#F02C56]">
-                  Follow
-                </button>
+                // <button 
+                //     className="flex item-center rounded-md py-2.5 px-8 mt-3 text-white font-semibold bg-[#F02C56] font-offbit-101-bold tracking-widest text-base leading-[1]"
+                //     style={{fontVariant: "small-caps"}}
+                // >
+                //   Follow
+                // </button>
+                <div></div>
               )}
             </div>
           </div>
 
-          <div className="flex items-center pt-6">
+          {/* <div className="flex font-neue-regular items-center pt-6">
             <div className="mr-4">
-              <span className="font-bold">10K</span>
-              <span className="text-gray-500 font-light text-[15px] pl-1.5">
+              <span className="font-bold ">10K</span>
+              <span className="text-gray-500 font-light text-[15px] pl-1.5 font-helvetica-light">
                 Following
               </span>
             </div>
             <div className="mr-4">
               <span className="font-bold">44K</span>
-              <span className="text-gray-500 font-light text-[15px] pl-1.5">
+              <span className="text-gray-500 font-light text-[15px] pl-1.5 font-helvetica-light">
                 Followers
               </span>
             </div>
-          </div>
+          </div> */}
 
           <ClientOnly>
             <p className="pt-4 mr-4 text-gray-500 font-light text-[15px] pl-1.5 max-w-[500px]">
@@ -97,7 +101,7 @@ export default function Profile({ params }: ProfilePageTypes) {
           </ClientOnly>
 
           <ul className="w-full flex items-center pt-4 border-b border-gray-300/30">
-            <li className="pl-16 text-center py-2 text-[17px] font-semibold ">
+            <li className="pl-16 text-center py-2 text-[17px] font-semibold font-offbit-101-bold tracking-wider ">
               Videos
             </li>
             {/* <li className="w-60 text-gray-500 text-center py-2 text-[17px] font-semibold">Liked</li> */}
