@@ -63,12 +63,12 @@ export default function TopNav() {
             pathname === "/" ? "" : ""
           }`}
         >
-          <Link className="min-w-[115px] font-neue-regular text-4xl" href="/">
+          <Link className="min-w-[115px] font-neue-regular text-4xl md:flex-1 md:w-full" href="/">
             {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
             99pitch
           </Link>
 
-          <div className="relative hidden md:flex items-center justify-end bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">
+          <div className=" md:flex-1 md:w-full md:self-center relative hidden md:flex items-center justify-end md:justify-center bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">
             <input
               type="text"
               onChange={handleSearchName}
@@ -103,7 +103,7 @@ export default function TopNav() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3 ">
+          <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
             <button
               onClick={() => goTo()}
               className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5"
