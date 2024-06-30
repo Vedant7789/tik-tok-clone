@@ -14,43 +14,53 @@ import { RandomUsers } from "@/app/types";
 import { useSearchProfilesByName } from "@/app/hooks/profile/index";
 import { useModalStore } from "@/app/stores/modal";
 import { useWallet } from "@meshsdk/react";
+import { useAppStore } from "@/app/stores";
+import { VscDebugDisconnect } from "react-icons/vsc";
 
 export default function TopNav() {
-  const userContext = useUser();
-  const router = useRouter();
-  const pathname = usePathname();
-  const { toggleConnectModal } = useModalStore();
-  // const connected = useWallet();
-  const connected = "";
-  const [searchProfiles, setSearchProfiles] = useState<RandomUsers[]>([]);
-  let [showMenu, setShowMenu] = useState<boolean>(false);
-  let { setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore();
+    const userContext = useUser();
+    const router = useRouter();
+    const pathname = usePathname();
+    const [searchProfiles, setSearchProfiles] = useState<RandomUsers[]>([]);
+    let [showMenu, setShowMenu] = useState<boolean>(false);
+    let { setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore();
 
-  useEffect(() => {
-    setIsEditProfileOpen(false);
-  }, []);
 
-  const handleSearchName = debounce(
-    async (event: { target: { value: string } }) => {
-      if (event.target.value == "") return setSearchProfiles([]);
+    const { toggleConnectModal, walletConnected, loading, setWalletConnected } = useAppStore()
+    const { connected, disconnect } = useWallet();
 
-      try {
-        const result = await useSearchProfilesByName(event.target.value);
-        if (result) return setSearchProfiles(result);
-        setSearchProfiles([]);
-      } catch (error) {
-        console.log(error);
-        setSearchProfiles([]);
-        alert(error);
-      }
-    },
-    500
-  );
+    const disconnectWallet = () => {
+        localStorage.setItem("wallet_name", "")
+        setWalletConnected(false);
+        disconnect();
+    }
 
-  const goTo = () => {
-    if (!userContext?.user) return setIsLoginOpen(true);
-    router.push("/upload");
-  };
+
+    useEffect(() => {
+        setIsEditProfileOpen(false);
+    }, []);
+
+    const handleSearchName = debounce(
+        async (event: { target: { value: string } }) => {
+            if (event.target.value == "") return setSearchProfiles([]);
+
+            try {
+                const result = await useSearchProfilesByName(event.target.value);
+                if (result) return setSearchProfiles(result);
+                setSearchProfiles([]);
+            } catch (error) {
+                console.log(error);
+                setSearchProfiles([]);
+                alert(error);
+            }
+        },
+        500
+    );
+
+    const goTo = () => {
+        if (!userContext?.user) return setIsLoginOpen(true);
+        router.push("/upload");
+    };
 
   return (
     <>
@@ -76,32 +86,32 @@ export default function TopNav() {
               placeholder="Search accounts"
             />
 
-            {searchProfiles.length > 0 ? (
-              <div className="absolute bg-black/50 max-w-[910px] h-auto w-full z-20 left-0 top-12 border border-white/30 p-1">
-                {searchProfiles.map((profile, index) => (
-                  <div className="p-1" key={index}>
-                    <Link
-                      href={`/profile/${profile?.id}`}
-                      className="flex items-center justify-between w-full cursor-pointer hover:bg-[#F12B56] p-1 px-2 hover:text-white"
-                    >
-                      <div className="flex items-center">
-                        <img
-                          className="rounded-md"
-                          width="40"
-                          src={useCreateBucketUrl(profile?.image)}
-                        />
-                        <div className="truncate ml-2">{profile?.name}</div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            ) : null}
+                        {searchProfiles.length > 0 ? (
+                            <div className="absolute bg-black/50 max-w-[910px] h-auto w-full z-20 left-0 top-12 border border-white/30 p-1">
+                                {searchProfiles.map((profile, index) => (
+                                    <div className="p-1" key={index}>
+                                        <Link
+                                            href={`/profile/${profile?.id}`}
+                                            className="flex items-center justify-between w-full cursor-pointer hover:bg-[#F12B56] p-1 px-2 hover:text-white"
+                                        >
+                                            <div className="flex items-center">
+                                                <img
+                                                    className="rounded-md"
+                                                    width="40"
+                                                    src={useCreateBucketUrl(profile?.image)}
+                                                />
+                                                <div className="truncate ml-2">{profile?.name}</div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : null}
 
-            <div className="px-3 py-1 flex items-center border-l border-l-gray-300">
-              <BiSearch color="#A1A2A7" size="22" />
-            </div>
-          </div>
+                        <div className="px-3 py-1 flex items-center border-l border-l-gray-300">
+                            <BiSearch color="#A1A2A7" size="22" />
+                        </div>
+                    </div>
 
           <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
             <button
@@ -114,8 +124,8 @@ export default function TopNav() {
             </button>
             <button
               onClick={() => toggleConnectModal(true)}
-              className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 pl-1.5 ${
-                connected && "bg-[#880FD2]"
+              className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 hover:text-white pl-1.5 ${
+                connected && "bg-[white] text-black"
               } transition-[background] font-offbit-101-bold tracking-widest`}
               style={{fontVariant: "small-caps"}}
             >
@@ -129,6 +139,14 @@ export default function TopNav() {
                 )}
               </span>
             </button>
+            {
+                connected && <button
+                onClick={disconnectWallet}
+                className={`flex items-center border rounded-sm py-[6px] text-white p-2 text-xl hover:bg-white/30 transition-all duration-200 `}
+              >
+                <VscDebugDisconnect />
+              </button>
+            }
             {!userContext?.user?.id ? (
               <div className="flex items-center gap-4">
                 <button
@@ -153,41 +171,41 @@ export default function TopNav() {
                     />
                   </button>
 
-                  {showMenu ? (
-                    <div className="absolute bg-[#121316] rounded-lg w-[120px] shadow-xl border border-gray-300/30 top-[60px] right-0">
-                      <button
-                        onClick={() => {
-                          router.push(`/profile/${userContext?.user?.id}`);
-                          setShowMenu(false);
-                        }}
-                        className="flex items-center w-full justify-start py-3 px-1.5 hover:bg-white/10 cursor-pointer"
-                      >
-                        <BiUser size="20" />
-                        <span className="pl-2 font-semibold text-sm">
-                          Profile
-                        </span>
-                      </button>
-                      <div className="w-[95%] h-[1px] bg-gray-300/30 mx-auto" />
-                      <button
-                        onClick={async () => {
-                          await userContext?.logout();
-                          setShowMenu(false);
-                        }}
-                        className="flex items-center justify-start w-full py-3 px-1.5 hover:bg-white/10 \ border-gray-300/30 cursor-pointer "
-                      >
-                        <FiLogOut size={20} />
-                        <span className="pl-2 font-semibold text-sm">
-                          Log out
-                        </span>
-                      </button>
+                                    {showMenu ? (
+                                        <div className="absolute bg-[#121316] rounded-lg w-[120px] shadow-xl border border-gray-300/30 top-[60px] right-0">
+                                            <button
+                                                onClick={() => {
+                                                    router.push(`/profile/${userContext?.user?.id}`);
+                                                    setShowMenu(false);
+                                                }}
+                                                className="flex items-center w-full justify-start py-3 px-1.5 hover:bg-white/10 cursor-pointer"
+                                            >
+                                                <BiUser size="20" />
+                                                <span className="pl-2 font-semibold text-sm">
+                                                    Profile
+                                                </span>
+                                            </button>
+                                            <div className="w-[95%] h-[1px] bg-gray-300/30 mx-auto" />
+                                            <button
+                                                onClick={async () => {
+                                                    await userContext?.logout();
+                                                    setShowMenu(false);
+                                                }}
+                                                className="flex items-center justify-start w-full py-3 px-1.5 hover:bg-white/10 \ border-gray-300/30 cursor-pointer "
+                                            >
+                                                <FiLogOut size={20} />
+                                                <span className="pl-2 font-semibold text-sm">
+                                                    Log out
+                                                </span>
+                                            </button>
+                                        </div>
+                                    ) : null}
+                                </div>
+                            </div>
+                        )}
                     </div>
-                  ) : null}
                 </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
+            </div>
+        </>
+    );
 }

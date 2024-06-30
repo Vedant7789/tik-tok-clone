@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url("custom-scrollbar.css");
+@import url("toast.css");
 @import url('font.css');
 
 body {
