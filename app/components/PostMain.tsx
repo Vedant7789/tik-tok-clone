@@ -53,7 +53,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                         </div>
 
                     </div>
-                    <p className="text-[15px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p>
+                    {/* <p className="text-[15px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p> */}
                     {/* <p className="text-[14px] text-gray-500 pb-0.5">#fun #cool #SuperAwesome</p> */}
                     {/* <p className="text-[14px] pb-0.5 flex items-center font-semibold">
                         <ImMusic size="17"/>
@@ -73,11 +73,11 @@ export default function PostMain({ post }: PostMainCompTypes) {
                                 className="rounded-xl object-cover mx-auto h-full" 
                                 src={useCreateBucketUrl(post?.video_url)}
                             />
-                            <img 
+                            {/* <img 
                                 className="absolute right-2 bottom-10" 
                                 width="90" 
                                 src="/images/tiktok-logo-white.png"
-                            />
+                            /> */}
                         </div>
                         
                         <PostMainLikes post={post} />
