@@ -94,9 +94,9 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
 
   return (
     <>
-      <div id={`PostMainLikes-${post?.id}`} className="relative mr-[75px]">
-        <div className="absolute bottom-0 pl-2">
-          <div className="pb-4 text-center">
+      <div id={`PostMainLikes-${post?.id}`} className="mr-[75px]">
+        <div className="absolute flex flex-col items-center bottom-12 right-3 pl-2">
+          <div className="pb-4 text-center flex flex-col gap-1">
             <button
               disabled={hasClickedLike}
               onClick={() => likeOrUnlike()}
