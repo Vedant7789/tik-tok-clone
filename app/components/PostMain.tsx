@@ -44,12 +44,12 @@ export default function PostMain({ post }: PostMainCompTypes) {
                         </button>
                     </div>
                     <p className="text-[15px] pb-0.5 break-words md:max-w-[400px] max-w-[300px]">{post.text}</p>
-                    <p className="text-[14px] text-gray-500 pb-0.5">#fun #cool #SuperAwesome</p>
-                    <p className="text-[14px] pb-0.5 flex items-center font-semibold">
+                    {/* <p className="text-[14px] text-gray-500 pb-0.5">#fun #cool #SuperAwesome</p> */}
+                    {/* <p className="text-[14px] pb-0.5 flex items-center font-semibold">
                         <ImMusic size="17"/>
                         <span className="px-1">original sound - AWESOME</span>
                         <AiFillHeart size="20"/>
-                    </p>
+                    </p> */}
 
                     <div className="mt-2.5 flex">
                         <div
