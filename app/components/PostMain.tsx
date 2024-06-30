@@ -51,7 +51,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                         <AiFillHeart size="20"/>
                     </p> */}
 
-                    <div className="mt-2.5 flex">
+                    <div className="mt-2.5 justify-center flex">
                         <div
                             className="relative min-h-[480px] max-h-[580px] max-w-[260px] flex items-center bg-black rounded-xl cursor-pointer"
                         >
