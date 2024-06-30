@@ -19,3 +19,8 @@ body {
   background: black;
   color: #fff;
 }
+
+
+.bg2 {
+    background: linear-gradient(85.91deg, rgba(0, 24, 254, .4) -19%, rgba(0, 0, 0, .4) 53.51%, rgba(255, 0, 0, .356) 118.99%);
+}

@@ -55,14 +55,14 @@ export default function Login() {
     }
 
     // Use Ctrl + Enter for login
-    useKeyPress(login, "Control", "Enter");
+    // useKeyPress(login, "Control", "Enter");
 
-    // useKeyPress(login, "Enter");
+    useKeyPress(login, "Enter");
 
     return (
         <>
             <div>
-                <h1 className="text-center text-[28px] mb-6 font-bold">Log in</h1>
+                <h1 className="text-center text-[28px] mb-6 font-bold font-offbit-101-bold">Log in</h1>
 
                 <div className="px-6 pb-2 mb-4">
                     <TextInput
@@ -88,7 +88,7 @@ export default function Login() {
                     <button
                         disabled={loading || !email || !password}
                         onClick={() => login()}
-                        className={`flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm bg-[#F02C56] disabled:cursor-not-allowed disabled:opacity-50`}
+                        className={`flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm  bg2 disabled:cursor-not-allowed disabled:opacity-50 font-helvetica-light tracking-wider`}
                     >
                         {loading ? (
                             <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} />

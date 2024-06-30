@@ -133,7 +133,7 @@ export default function TopNav() {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => setIsLoginOpen(true)}
-                  className="flex items-center bg-[#F02C56] text-white border rounded-md px-3 py-[6px]"
+                  className="flex items-center bg-[#fff] text-black py-[6px]  px-3 border "
                 >
                   <span className="whitespace-nowrap mx-4 font-medium text-[15px]">
                     Log in

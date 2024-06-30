@@ -100,7 +100,7 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
             <button
               disabled={hasClickedLike}
               onClick={() => likeOrUnlike()}
-              className="rounded-full bg-gray-200 p-2 cursor-pointer"
+              className="rounded-full bg-gray-900  p-2 cursor-pointer"
             >
               {!hasClickedLike ? (
                 <AiFillHeart
@@ -111,7 +111,7 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
                 <BiLoaderCircle className="animate-spin" size="25" />
               )}
             </button>
-            <span className="text-xs text-gray-800 font-semibold">
+            <span className="text-xs text-gray-300 font-semibold">
               {likes?.length}
             </span>
           </div>
@@ -122,19 +122,19 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
             }
             className="pb-4 text-center"
           >
-            <div className="rounded-full bg-gray-200 p-2 cursor-pointer">
+            <div className="rounded-full bg-gray-900  p-2 cursor-pointer">
               <FaCommentDots size="25" />
             </div>
-            <span className="text-xs text-gray-800 font-semibold">
+            <span className="text-xs text-gray-300 font-semibold">
               {comments?.length}
             </span>
           </button>
 
           <button className="text-center">
-            <div className="rounded-full bg-gray-200 p-2 cursor-pointer">
+            <div className="rounded-full bg-gray-900 p-2 cursor-pointer">
               <FaShare size="25" />
             </div>
-            <span className="text-xs text-gray-800 font-semibold">55</span>
+            <span className="text-xs text-gray-300 font-semibold">55</span>
           </button>
         </div>
       </div>

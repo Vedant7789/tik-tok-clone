@@ -256,7 +256,7 @@ export default function EditProfileOverlay() {
                                 <button
                                     disabled={isUpdating}
                                     onClick={() => updateUserInfo()}
-                                    className="px-5 py-2 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    className="px-5 py-2 border text-[16px] text-black bg-[#fff] rounded-sm font-offbit-101-bold tracking-widest"
                                     style={{fontVariant: "small-caps"}}
                                 >
                                     <span className=" font-medium text-[15px]">
@@ -286,7 +286,7 @@ export default function EditProfileOverlay() {
 
                                 <button
                                     onClick={() => cropAndUpdateImage()}
-                                    className="px-5 py-2 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    className="px-5 py-2 border text-[16px] text-black bg-[#fff] rounded-sm font-offbit-101-bold tracking-widest"
                                     style={{fontVariant: "small-caps"}}
                                 >
                                     <span className="font-medium text-[15px]">

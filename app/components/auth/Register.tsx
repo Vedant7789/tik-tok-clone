@@ -81,7 +81,7 @@ export default function Register() {
     return (
         <>
             <div>
-                <h1 className="text-center text-[28px] mb-6 font-bold">Register</h1>
+                <h1 className="text-center text-[28px] mb-6 font-bold font-offbit-101-bold">Register</h1>
 
                 <div className="px-6 pb-4">
 
@@ -132,7 +132,7 @@ export default function Register() {
                         disabled={loading || !name || !email || !password || !confirmPassword}
                         onClick={() => register()} 
                         className={`
-                            flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm bg-[#F02C56] disabled:cursor-not-allowed disabled:opacity-50
+                            flex items-center justify-center w-full text-[17px] font-semibold text-white py-3 rounded-sm bg2 disabled:cursor-not-allowed disabled:opacity-50 font-helvetica-light tracking-wider
                         `}
                     >
                         {loading ? <BiLoaderCircle className="animate-spin" color="#ffffff" size={25} /> : 'Register'}

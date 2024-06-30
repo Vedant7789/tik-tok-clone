@@ -28,7 +28,7 @@ export default function AuthOverlay() {
                     <div className="flex items-center justify-center py-5 left-0 bottom-0 border-t w-full mt-6">
                         <span className="text-[14px] text-gray-600">Don’t have an account?</span>
 
-                        <button onClick={() => setIsRegister(isRegister = !isRegister)} className="text-[14px] text-[#F02C56] font-semibold pl-1" >
+                        <button onClick={() => setIsRegister(isRegister = !isRegister)} className="text-[14px] text-[#fff] font-semibold pl-1" >
                             <span>{!isRegister ? 'Register' : 'Log in'}</span>
                         </button>
                     </div>

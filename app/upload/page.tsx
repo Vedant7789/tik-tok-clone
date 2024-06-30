@@ -129,7 +129,7 @@ export default function Upload() {
                                 <p className="mt-2 text-gray-400 text-[13px]">Less than 2 GB</p>
                                 <label
                                     htmlFor="fileInput"
-                                    className="px-2 py-1.5 mt-8 text-white text-[15px] w-[80%] bg-[#F02C56] rounded-sm cursor-pointer"
+                                    className="px-2 py-1.5 mt-8 text-black text-[15px] w-[80%] bg-[#fff] rounded-sm cursor-pointer"
                                 >
                                     Select file
                                 </label>
@@ -290,7 +290,7 @@ export default function Upload() {
                                 <button
                                     disabled={isUploading}
                                     onClick={() => createNewPost()}
-                                    className="px-10 py-2.5 mt-8 border text-[16px] text-white bg-[#F02C56] rounded-sm font-offbit-101-bold tracking-widest"
+                                    className="px-10 py-2.5 mt-8 border text-[16px] text-black bg-[#Fff] rounded-sm font-offbit-101-bold tracking-widest"
                                     style={{fontVariant: "small-caps"}}
                                 >
                                     {isUploading ? (

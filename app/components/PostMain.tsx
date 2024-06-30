@@ -42,11 +42,11 @@ export default function PostMain({ post }: PostMainCompTypes) {
 
                         <div className="flex gap-4 items-center">
                             
-                            <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] text-[#F02C56] hover:bg-[#ffeef2] font-semibold rounded-md font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1">
+                            <button className="text-[15px] px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                 <MdWhereToVote className="-translate-y-[3px]" />
                                 Proposal
                             </button>
-                            <button className="border text-[15px] px-[21px] py-0.5 border-[#F02C56] bg-[#F02C56] text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold rounded-md font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1">
+                            <button className="text-[15px] px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                 <MdWhereToVote className="-translate-y-[3px]" />
                                 Profile
                             </button>
