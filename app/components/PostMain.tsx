@@ -25,7 +25,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
     }, [])
 
     return (
-        <div className="relative snap_childrens h-[screen] md:h-full">
+        <div className="relative snap_childrens h-[100dvh] md:h-full">
             <div className="block md:hidden">
                 <div id={`PostMain-${post.id}`} className="flex border-b h-[100vh] md:h-full w-[100vw]">
                     <video
