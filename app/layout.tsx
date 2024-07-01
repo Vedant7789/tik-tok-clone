@@ -3,7 +3,6 @@ import UserProvider from "./context/user";
 import AllOverlays from "@/app/components/AllOverlays";
 import "@/app/styles/globals.css";
 import type { Metadata } from "next";
-import { ConnectModal } from "@/app/components/ConnectModal";
 import { useModalStore } from "@/app/stores/modal";
 import { useEffect } from "react";
 import { useAppStore } from "./stores";
