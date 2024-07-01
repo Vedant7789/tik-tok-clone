@@ -56,8 +56,8 @@ export default function SingleComment({ comment, params }: SingleCommentCompType
                                     onClick={() => deleteThisComment()}
                                 >
                                     {isDeleting 
-                                        ? <BiLoaderCircle className="animate-spin" color="#E91E62" size="20"/>
-                                        : <BsTrash3 className="cursor-pointer" size="25"/>
+                                        ? <BiLoaderCircle className="animate-spin text-sm md:text-xl" color="#E91E62" />
+                                        : <BsTrash3 className="cursor-pointer text-lg md:text-2xl"/>
                                     }
                                 </button>
                             ) : null}

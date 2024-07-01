@@ -116,8 +116,8 @@ export default function CommentsHeader({
   };
   return (
     <>
-      <div className="flex items-center justify-between px-8">
-        <div className="flex items-center">
+      <div className="flex items-center justify-between px-6 md:px-7 ">
+        <div className="flex items-center ">
           <Link href={`/profile/${post?.user_id}`}>
             {post?.profile.image ? (
               <img
@@ -152,53 +152,57 @@ export default function CommentsHeader({
         {contextUser?.user?.id == post?.user_id ? (
           <div>
             {isDeleteing ? (
-              <BiLoaderCircle className="animate-spin" size="25" />
+              <BiLoaderCircle className="animate-spin text-base md:text-2xl" size="25" />
             ) : (
               <button disabled={isDeleteing} onClick={() => deletePost()}>
-                <BsTrash3 className="cursor-pointer" size="25" />
+                <BsTrash3 className="cursor-pointer text-lg md:text-2xl" />
               </button>
             )}
           </div>
         ) : null}
       </div>
 
-      <p className="px-8 mt-4 text-sm font-offbit-101-bold tracking-widest">{post?.text}</p>
+      <div className="flex flex-row md:flex-col items-center md:items-start py-2 px-6 md:px-7 md:py-0 justify-start border-b border-gray-300/30">
+        <p className="px-8 mt-0 md:mt-4 text-sm font-offbit-101-bold tracking-widest border-r md:border-none border-white/30">
+          {post?.text}
+        </p>
 
-      {/* <p className="flex item-center gap-2 px-8 mt-4 text-sm font-bold font-neue-regular">
-        <ImMusic size="17" />
-        {post?.profile.name}
-      </p> */}
+        {/* <p className="flex item-center gap-2 px-8 mt-4 text-sm font-bold font-neue-regular">
+  <ImMusic size="17" />
+  {post?.profile.name}
+</p> */}
 
-      <div className="flex items-center px-8 mt-8">
-        <ClientOnly>
-          <div className="pb-4 text-center flex items-center font-neue-regular">
-            <button
-              disabled={hasClickedLike}
-              onClick={() => likeOrUnlike()}
-              className="rounded-full bg-gray-300/10 p-2 cursor-pointer"
-            >
-              {!hasClickedLike ? (
-                <AiFillHeart
-                  color={likesByPost.length > 0 && userLiked ? "#ff2626" : ""}
-                  size="25"
-                />
-              ) : (
-                <BiLoaderCircle className="animate-spin" size="25" />
-              )}
-            </button>
-            <span className="text-xs pl-2 pr-4 text-gray-300 font-semibold">
-              {likesByPost.length}
+        <div className="flex items-center px-8 mt-0 md:mt-8 ">
+          <ClientOnly>
+            <div className="md:pb-4 text-center flex items-center font-neue-regular">
+              <button
+                disabled={hasClickedLike}
+                onClick={() => likeOrUnlike()}
+                className="rounded-full bg-gray-300/10 p-2 cursor-pointer "
+              >
+                {!hasClickedLike ? (
+                  <AiFillHeart
+                  className="text-base md:text-2xl"
+                    color={likesByPost.length > 0 && userLiked ? "#ff2626" : ""}
+                  />
+                ) : (
+                  <BiLoaderCircle className="animate-spin text-base md:text-2xl" />
+                )}
+              </button>
+              <span className="text-xs pl-2 pr-4 text-gray-300 font-semibold">
+                {likesByPost.length}
+              </span>
+            </div>
+          </ClientOnly>
+
+          <div className="md:pb-4 text-center flex items-center">
+            <div className="rounded-full bg-gray-300/10 p-2 cursor-pointer">
+              <BsChatDots className="text-base md:text-2xl"/>
+            </div>
+            <span className="text-xs pl-2 text-gray-300 font-semibold">
+              {commentsByPost?.length}
             </span>
           </div>
-        </ClientOnly>
-
-        <div className="pb-4 text-center flex items-center">
-          <div className="rounded-full bg-gray-300/10 p-2 cursor-pointer">
-            <BsChatDots size={25} />
-          </div>
-          <span className="text-xs pl-2 text-gray-300 font-semibold">
-            {commentsByPost?.length}
-          </span>
         </div>
       </div>
     </>

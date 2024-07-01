@@ -10,98 +10,100 @@ import { CommentsCompTypes } from "@/app/types";
 import useKeyPress from "@/app/hooks/useKeyPress";
 
 export default function Comments({ params }: CommentsCompTypes) {
-    let { commentsByPost, setCommentsByPost } = useCommentStore();
-    let { setIsLoginOpen } = useGeneralStore();
+  let { commentsByPost, setCommentsByPost } = useCommentStore();
+  let { setIsLoginOpen } = useGeneralStore();
 
-    const contextUser = useUser();
-    const [comment, setComment] = useState<string>("");
-    const [inputFocused, setInputFocused] = useState<boolean>(false);
-    const [isUploading, setIsUploading] = useState<boolean>(false);
+  const contextUser = useUser();
+  const [comment, setComment] = useState<string>("");
+  const [inputFocused, setInputFocused] = useState<boolean>(false);
+  const [isUploading, setIsUploading] = useState<boolean>(false);
 
-    const addComment = async () => {
-        if (!comment) return;
-        if (!contextUser?.user) return setIsLoginOpen(true);
+  const addComment = async () => {
+    if (!comment) return;
+    if (!contextUser?.user) return setIsLoginOpen(true);
 
-        try {
-            setIsUploading(true);
-            await useCreateComment(contextUser?.user?.id, params?.postId, comment);
-            setCommentsByPost(params?.postId);
-            setComment("");
-            setIsUploading(false);
-        } catch (error) {
-            console.log(error);
-            alert(error);
-        }
-    };
+    try {
+      setIsUploading(true);
+      await useCreateComment(contextUser?.user?.id, params?.postId, comment);
+      setCommentsByPost(params?.postId);
+      setComment("");
+      setIsUploading(false);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
 
     useKeyPress(addComment, "Enter")
 
-    return (
-        <>
-            <div
-                id="Comments"
-                className="relative bg-black/30 z-0 w-full h-[calc(100%-273px)] border-t border-gray-300/30 overflow-auto"
-            >
-                <div className="pt-2" />
+  return (
+    <>
+      <div
+        id="Comments"
+        className="relative bg-black/30 z-0 w-full pb-28 h-full md:h-[calc(100%-273px)] mt-2 [&::-webkit-scrollbar]:hidden overflow-auto"
+      >
+        <div className="pt-2" />
 
-                <ClientOnly>
-                    {commentsByPost.length < 1 ? (
-                        <div className="text-center mt-6 text-xl text-gray-500 font-neue-ultra-bold">
-                            No comments...
-                        </div>
-                    ) : (
-                        <div>
-                            {commentsByPost.map((comment, index) => (
-                                <SingleComment key={index} comment={comment} params={params} />
-                            ))}
-                        </div>
-                    )}
-                </ClientOnly>
-
-                <div className="mb-28" />
+        <ClientOnly>
+          {commentsByPost.length < 1 ? (
+            <div className="text-center mt-6 text-xl text-gray-500 font-neue-ultra-bold">
+              No comments...
             </div>
+          ) : (
+            <div>
+              {commentsByPost.map((comment, index) => (
+                <SingleComment key={index} comment={comment} params={params} />
+              ))}
+            </div>
+          )}
+        </ClientOnly>
 
-            <div
-                id="CreateComment"
-                className="absolute flex items-center justify-between bottom-0 bg-[#121316] h-[85px] lg:max-w-[550px] w-full py-5 px-8 border-t border-gray-300/30"
-            >
-                <div
-                    className={`
+        <div className="mb-28" />
+      </div>
+
+      <div
+        id="CreateComment"
+        className="absolute flex items-center justify-between bottom-0 right-0 left-0 bg-[#121316] md:h-[85px] lg:max-w-[550px] w-full py-5 px-4 md:px-8 border-t border-gray-300/30"
+      >
+        <div
+          className={`
                         bg-black/40 flex items-center rounded-lg w-full lg:max-w-[420px]
-                        ${inputFocused
+                        ${
+                          inputFocused
                             ? "border border-gray-300"
                             : "border border-gray-300/30"
                         }
                     `}
-                >
-                    <input
-                        onFocus={() => setInputFocused(true)}
-                        onBlur={() => setInputFocused(false)}
-                        onChange={(e) => setComment(e.target.value)}
-                        value={comment || ""}
-                        className="bg-transparent text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg font-helvetica-light"
-                        type="text"
-                        placeholder="Add comment..."
-                    />
-                </div>
-                {!isUploading ? (
-                    <button
-                        disabled={!comment}
-                        onClick={() => addComment()}
-                        className={`
+        >
+          <input
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
+            onChange={(e) => setComment(e.target.value)}
+            value={comment || ""}
+            className="bg-transparent text-[14px] focus:outline-none w-full lg:max-w-[420px] p-2 rounded-lg font-helvetica-light"
+            type="text"
+            placeholder="Add comment..."
+          />
+        </div>
+        {!isUploading ? (
+          <button
+            disabled={!comment}
+            onClick={() => addComment()}
+            className={`
                             font-semibold text-sm ml-5 pr-1 font-offbit-101-bold
-                            ${comment
+                            ${
+                              comment
                                 ? "text-[#F02C56] cursor-pointer"
                                 : "text-gray-400"
                             }
                         `}
-                    >
-                        Post
-                    </button>
-                ) : (
-                    <BiLoaderCircle className="animate-spin" color="#E91E62" size="20" />
-                )}
-            </div>
-        </>
-    );
+          >
+            Post
+          </button>
+        ) : (
+          <BiLoaderCircle className="animate-spin" color="#E91E62" size="20" />
+        )}
+      </div>
+    </>
+  );
 }
