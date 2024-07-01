@@ -26,7 +26,7 @@ export default function Profile({ params }: ProfilePageTypes) {
   return (
     <>
       <MainLayout>
-        <div className="relative w-auto h-full rounded-xl flex-1 bg-[#121316] border border-[#FFFFFF12] p-6 sm:ml-6 md:ml-0 flex flex-col overflow-hidden">
+        <div className="my-[5%] md:my-0 relative w-auto h-full rounded-xl flex-1 bg-[#121316] border border-[#FFFFFF12] p-6 sm:ml-6 md:ml-0 flex flex-col overflow-hidden">
           <div className="flex w-[calc(100vw-230px)]">
             <ClientOnly>
               {currentProfile ? (

@@ -5,6 +5,7 @@ import MainLayout from "./layouts/MainLayout"
 import { usePostStore } from "@/app/stores/post"
 import ClientOnly from "./components/ClientOnly"
 import PostMain from "./components/PostMain"
+import HomeLayout from "./layouts/HomeLayout"
 
 export default function Home() {
     let { allPosts, setAllPosts } = usePostStore();
@@ -25,15 +26,17 @@ export default function Home() {
             {/* <meta property="twitter:url" content="" /> */}
             <meta name="twitter:title" content={"99pitch"} />
             <meta name="twitter:description" content={"99pitch"} />
-            <MainLayout>
+            <HomeLayout>
                 <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
                     <ClientOnly>
-                        {allPosts.map((post, index) => (
-                            <PostMain post={post} key={index} />
-                        ))}
+                        <div className="overflow-x-hidden max-h-full scroll_snapping">
+                            {allPosts.map((post, index) => (
+                                <PostMain post={post} key={index} />
+                            ))}
+                        </div>
                     </ClientOnly>
                 </div>
-            </MainLayout>
+            </HomeLayout>
         </>
     )
 }

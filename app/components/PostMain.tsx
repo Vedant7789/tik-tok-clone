@@ -25,19 +25,17 @@ export default function PostMain({ post }: PostMainCompTypes) {
     }, [])
 
     return (
-        <>
-            <div className="block md:hidden ">
-                <div id={`PostMain-${post.id}`} className="flex border-b h-[100vh] w-[100vw] -translate-y-[63px] ">
-                    {/* <div className="absolute top-0 left-0 w-full h-full"> */}
-                        <video
-                            id={`video-${post.id}`}
-                            loop
-                            // controls
-                            muted
-                            className="object-cover h-full w-full aspect-auto"
-                            src={useCreateBucketUrl(post?.video_url)}
-                        />
-                    {/* </div> */}
+        <div className="relative snap_childrens">
+            <div className="block md:hidden">
+                <div id={`PostMain-${post.id}`} className="flex border-b h-[100vh] w-[100vw]  ">
+                    <video
+                        id={`video-${post.id}`}
+                        loop
+                        // controls
+                        muted
+                        className="object-cover h-full w-full aspect-auto"
+                        src={useCreateBucketUrl(post?.video_url)}
+                    />
 
                     <div className="absolute bottom-7 left-5 right-5 ">
                         <div className="flex items-center justify-between pb-0.5">
@@ -121,7 +119,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

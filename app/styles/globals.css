@@ -22,6 +22,17 @@ body {
 }
 
 
+.scroll_snapping {
+    scroll-snap-type: y proximity;
+    overflow-y: auto;
+    max-height: 100vh;
+    /* scroll-padding-top: 10vh; */
+}
+.snap_childrens {
+    scroll-snap-align: start;
+    height: 100vh;
+}
+
 .bg2 {
     background: linear-gradient(85.91deg, rgba(0, 24, 254, .4) -19%, rgba(0, 0, 0, .4) 53.51%, rgba(255, 0, 0, .356) 118.99%);
 }

@@ -27,7 +27,7 @@ export default function RootLayout({
         <html lang="en">
             <MeshProvider>
                 <UserProvider>
-                    <body className="p-[4%]">
+                    <body className="py-0 px-[4%] md:p-[4%]">
                         <AllOverlays />
                         {children}
                         <ToastContainer position="top-center" theme="dark" style={{ minWidth: "400px" }} />
