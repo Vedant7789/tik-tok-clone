@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import UploadLayout from "../layouts/UploadLayout";
 import { BiLoaderCircle, BiSolidCloudUpload } from "react-icons/bi";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import { PiKnifeLight } from "react-icons/pi";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/app/context/user";
 import { UploadError } from "../types";
@@ -50,14 +49,31 @@ export default function Upload() {
     };
 
     const validate = () => {
+        let catalyst_expression = /\bhttps?:\/\/(?:[a-zA-Z0-9-]+\.)?cardano\.ideascale\.com(?:\/\S*)?\b/;
+        let twitter_expression = /^(https?:\/\/)?([\w-]+\.)?(x\.com|twitter\.com)(\/\S*)?$/;
+
         setError(null);
         let isError = false;
+        if(!catalyst_expression.test(catalystLink)){
+            setError({ type: "catalystLink", message: "Invalid Catalyst Proposal Link !!" });
+            isError = true;
+        }
+        if(!twitter_expression.test(twitterLink)){
+            setError({ type: "twitterLink", message: "Invalid Twitter Link !!" });
+            isError = true;
+        }
 
         if (!file) {
             setError({ type: "File", message: "A video is required" });
             isError = true;
         } else if (!caption) {
             setError({ type: "caption", message: "A caption is required" });
+            isError = true;
+        } else if (!catalystLink){
+            setError({ type: "catalystLink", message: "A catalyst link is required" });
+            isError = true;
+        } else if(!twitterLink){
+            setError({ type: "twitterLink", message: "A twitter link is required" });
             isError = true;
         }
         return isError;
@@ -178,11 +194,6 @@ export default function Upload() {
                                     className="absolute z-20 pointer-events-none"
                                     src="/images/mobile-case.png"
                                 />
-                                <img
-                                    className="absolute right-4 bottom-6 z-20"
-                                    width="90"
-                                    src="/images/tiktok-logo-white.png"
-                                />
                                 <video
                                     autoPlay
                                     loop
@@ -253,6 +264,7 @@ export default function Upload() {
                                     "
                                     value={catalystLink}
                                     onChange={(event) => setCatalystLink(event.target.value)}
+                                    required
                                 />
                             </div>
 
@@ -275,6 +287,7 @@ export default function Upload() {
                                     "
                                     value={twitterLink}
                                     onChange={(event) => setTwitterLink(event.target.value)}
+                                    required
                                 />
                             </div>
 
