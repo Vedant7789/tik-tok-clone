@@ -25,7 +25,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
         }
     }, [])
 
-    const openLink = (url: string) => window.open(url, "_blank");
+    const openLink = (url: string | null) => url && window.open(url, "_blank");
 
     return (
         <div className="relative snap_childrens h-[100dvh] md:h-full">
