@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { debounce } from "debounce";
 import { useRouter, usePathname } from "next/navigation";
-import { BiSearch, BiUser } from "react-icons/bi";
+import { BiLoaderCircle, BiSearch, BiUser } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { CiWallet } from "react-icons/ci";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -25,6 +25,7 @@ export default function TopNav() {
     const [searchProfiles, setSearchProfiles] = useState<RandomUsers[]>([]);
     let [showMenu, setShowMenu] = useState<boolean>(false);
     let { setIsLoginOpen, setIsEditProfileOpen } = useGeneralStore();
+    const [searchLoading, setSearchLoading] = useState<boolean>(false);
 
 
     const { toggleConnectModal, walletConnected, loading, setWalletConnected } = useAppStore()
@@ -44,6 +45,7 @@ export default function TopNav() {
     const handleSearchName = debounce(
         async (event: { target: { value: string } }) => {
             if (event.target.value == "") return setSearchProfiles([]);
+            setSearchLoading(true);
 
             try {
                 const result = await useSearchProfilesByName(event.target.value);
@@ -53,6 +55,8 @@ export default function TopNav() {
                 console.log(error);
                 setSearchProfiles([]);
                 alert(error);
+            } finally {
+                setSearchLoading(false)
             }
         },
         500
@@ -87,12 +91,12 @@ export default function TopNav() {
                         />
 
                         {searchProfiles.length > 0 ? (
-                            <div className="absolute bg-black/50 max-w-[910px] h-auto w-full z-20 left-0 top-12 border border-white/30 p-1">
+                            <div className="absolute bg-black max-w-[910px] h-auto w-full z-20 left-0 top-14 border border-white/30 p-1">
                                 {searchProfiles.map((profile, index) => (
                                     <div className="p-1" key={index}>
                                         <Link
                                             href={`/profile/${profile?.id}`}
-                                            className="flex items-center justify-between w-full cursor-pointer hover:bg-[#F12B56] p-1 px-2 hover:text-white"
+                                            className="flex items-center justify-between w-full cursor-pointer hover:bg-white/10 p-1 px-2 hover:text-white"
                                         >
                                             <div className="flex items-center">
                                                 <img
@@ -109,7 +113,14 @@ export default function TopNav() {
                         ) : null}
 
                         <div className="px-3 py-1 flex items-center border-l border-l-gray-300">
-                            <BiSearch color="#A1A2A7" size="22" />
+                            {
+                                searchLoading ? <BiLoaderCircle
+                                    className="animate-spin"
+                                    color="#ffffff"
+                                    size={22}
+                                /> :
+                                <BiSearch color="#A1A2A7" size="22" />
+                            }
                         </div>
                     </div>
 
