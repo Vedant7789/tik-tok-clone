@@ -70,7 +70,7 @@ export default function Upload() {
         setIsUploading(true);
 
         try {
-            await useCreatePost(file, contextUser?.user?.id, caption);
+            await useCreatePost(file, contextUser?.user?.id, caption, catalystLink, twitterLink);
             router.push(`/profile/${contextUser?.user?.id}`);
             setIsUploading(false);
         } catch (error) {

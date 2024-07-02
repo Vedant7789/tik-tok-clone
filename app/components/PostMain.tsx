@@ -25,6 +25,8 @@ export default function PostMain({ post }: PostMainCompTypes) {
         }
     }, [])
 
+    const openLink = (url: string) => window.open(url, "_blank");
+
     return (
         <div className="relative snap_childrens h-[100dvh] md:h-full">
             <div className="block md:hidden">
@@ -52,11 +54,11 @@ export default function PostMain({ post }: PostMainCompTypes) {
                             </div>
                             <div className="flex gap-4 items-center">
 
-                                <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                <button onClick={() => openLink(post.proposal_link)} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
                                     <MdWhereToVote className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Proposal</span>
                                 </button>
-                                <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                <button onClick={() => openLink(post.twitter_link)} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
                                     <BsTwitter className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Profile</span>
                                 </button>
@@ -89,11 +91,11 @@ export default function PostMain({ post }: PostMainCompTypes) {
                             </div>
                             <div className="flex gap-4 items-center">
 
-                                <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
+                                <button onClick={() => openLink(post.proposal_link)} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                     <MdWhereToVote className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Proposal</span>
                                 </button>
-                                <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
+                                <button onClick={() => openLink(post.twitter_link)} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                     <BsTwitter className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Profile</span>
                                 </button>

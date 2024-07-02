@@ -28,11 +28,11 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             const promise = (await account.get()) as any;
             const profile = await useGetProfileByUserId(promise?.$id);
             if(t === "login") {
-                success(`Welcome back ${profile.name}!`)
+                success(`Welcome back, ${profile.name}!`)
             } else if (t === "register") {
-                success(`Welcome ${profile.name}!`)
+                success(`Welcome, ${profile.name}!`)
             } else {
-                success(`Session Restored and welcome back ${profile.name}!`)
+                success(`Session Restored and welcome back, ${profile.name}!`)
             }
             
             setUser({
@@ -77,14 +77,7 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             checkUser("login");
             return true;
         } catch (e: any) {
-            // Step 2: Check the error message
-            if (e.message.includes("Invalid credentials")) {
-                error("Incorrect password");
-            } else if (e.message.includes("User (user) not found")) {
-                error("User not found. Please register first.");
-            } else {
-                error(`${e.message}`);
-            }
+            error(`${e.message}`);
             console.error(e);
             return false;
         }

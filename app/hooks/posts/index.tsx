@@ -8,7 +8,7 @@ const NEXT_PUBLIC_COLLECTION_ID_POST = String(
   process.env.NEXT_PUBLIC_COLLECTION_ID_POST
 );
 
-const useCreatePost = async (file: File, userId: string, caption: string) => {
+const useCreatePost = async (file: File, userId: string, caption: string, catalystLink: string, twitterLink: string) => {
   let videoId = Math.random().toString(36).slice(2, 22);
 
   try {
@@ -20,6 +20,8 @@ const useCreatePost = async (file: File, userId: string, caption: string) => {
         user_id: userId,
         text: caption,
         video_url: videoId,
+        proposal_link: catalystLink,
+        twitter_link: twitterLink,
         created_at: new Date().toISOString(),
       }
     );
