@@ -6,6 +6,7 @@ import { useWallet } from "@meshsdk/react";
 import { useAppStore } from "../stores";
 import { success } from "../utils/toast";
 import { ConnectModal } from "../components/ConnectWallet";
+import Loader from "../components/Loader";
 
 export default function MainLayout({
     children,
@@ -16,7 +17,7 @@ export default function MainLayout({
 
     const { showConnectModal, loading } = useAppStore();
 
-    return loading ? <>Loading...</> : (
+    return loading ? <Loader /> : (
         <>
             <TopNav />
             <div className={`flex md:gap-6 w-full items-start relative mt-12 z-[1]`}>
