@@ -57,7 +57,7 @@ const useGetAllPosts = async () => {
           image: profile?.image,
         },
         proposal_link: doc.proposal_link,
-        profile_link: doc.profile_link,
+        twitter_link: doc.twitter_link,
       };
     });
 
@@ -90,7 +90,7 @@ const useGetPostById = async (id: string) => {
         image: profile?.image,
       },
       proposal_link: post.proposal_link,
-      profile_link: post.profile_link,
+      twitter_link: post.twitter_link,
     };
   } catch (error) {
     throw error;

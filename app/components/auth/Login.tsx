@@ -44,13 +44,14 @@ export default function Login() {
 
         try {
             setLoading(true);
-            await contextUser.login(email, password);
+            const success = await contextUser.login(email, password);
             setLoading(false);
-            setIsLoginOpen(false);
+            if(success) {
+                setIsLoginOpen(false);
+            }
         } catch (error) {
             console.log(error);
             setLoading(false);
-            alert(error);
         }
     }
 

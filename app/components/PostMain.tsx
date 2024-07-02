@@ -8,6 +8,7 @@ import PostMainLikes from "./PostMainLikes"
 import useCreateBucketUrl from "../hooks/useCreateBucketUrl"
 import { PostMainCompTypes } from "../types"
 import { MdWhereToVote } from "react-icons/md"
+import { BsTwitter } from "react-icons/bs"
 
 export default function PostMain({ post }: PostMainCompTypes) {
 
@@ -56,7 +57,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                                     <span className="hidden sm:inline-block">Proposal</span>
                                 </button>
                                 <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
-                                    <MdWhereToVote className="-translate-y-[3px]" />
+                                    <BsTwitter className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Profile</span>
                                 </button>
                             </div>
@@ -93,7 +94,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                                     <span className="hidden sm:inline-block">Proposal</span>
                                 </button>
                                 <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
-                                    <MdWhereToVote className="-translate-y-[3px]" />
+                                    <BsTwitter className="-translate-y-[3px]" />
                                     <span className="hidden sm:inline-block">Profile</span>
                                 </button>
                             </div>

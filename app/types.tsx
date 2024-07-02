@@ -1,7 +1,7 @@
 export interface UserContextTypes {
     user: User | null;
-    register: (name: string, email: string, password: string) => Promise<void>;
-    login: (email: string, password: string) => Promise<void>;
+    register: (name: string, email: string, password: string) => Promise<boolean>;
+    login: (email: string, password: string) => Promise<boolean>;
     logout: () => Promise<void>;
     checkUser: () => Promise<void>;
 }
@@ -54,7 +54,7 @@ export interface PostWithProfile {
     video_url: string;
     text: string;
     proposal_link: string;
-    profile_link: string;
+    twitter_link: string;
     created_at: string;
     profile: {
         user_id: string;

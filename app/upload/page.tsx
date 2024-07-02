@@ -18,7 +18,7 @@ export default function Upload() {
     let [fileDisplay, setFileDisplay] = useState<string>("");
     let [caption, setCaption] = useState<string>("");
     let [catalystLink, setCatalystLink] = useState<string>("");
-    let [profileLink, setProfileLink] = useState<string>("");
+    let [twitterLink, setTwitterLink] = useState<string>("");
     let [file, setFile] = useState<File | null>(null);
     let [error, setError] = useState<UploadError | null>(null);
     let [isUploading, setIsUploading] = useState<boolean>(false);
@@ -219,7 +219,7 @@ export default function Upload() {
                                 <input
                                     maxLength={150}
                                     type="text"
-                                    placeholder="Write your caption here . . ."
+                                    placeholder="Write your caption here ..."
                                     className="
                                         w-full
                                         border
@@ -258,12 +258,12 @@ export default function Upload() {
 
                             <div className="mt-5">
                                 <div className="flex items-center justify-between">
-                                    <div className="mb-1 text-[15px]">Profile Link</div>
+                                    <div className="mb-1 text-[15px]">Twitter Link</div>
                                 </div>
                                 <input
                                     maxLength={150}
                                     type="text"
-                                    placeholder="Write your caption here . . ."
+                                    placeholder="Write your twitter link here ..."
                                     className="
                                         w-full
                                         border
@@ -273,8 +273,8 @@ export default function Upload() {
                                         focus:outline-none
                                         placeholder:opacity-50
                                     "
-                                    value={profileLink}
-                                    onChange={(event) => setProfileLink(event.target.value)}
+                                    value={twitterLink}
+                                    onChange={(event) => setTwitterLink(event.target.value)}
                                 />
                             </div>
 

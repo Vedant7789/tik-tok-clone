@@ -62,14 +62,15 @@ export default function Register() {
 
         try {
             setLoading(true)
-            await contextUser.register(name, email, password)
-            setLoading(false)
-            setIsLoginOpen(false)
+            const success = await contextUser.register(name, email, password)
+            setLoading(false);
+            if(success) {
+                setIsLoginOpen(false);
+            }
             router.refresh()
         } catch (error) {
             console.log(error)
             setLoading(false)
-            alert(error)
         }
     }
 
