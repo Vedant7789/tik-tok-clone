@@ -10,7 +10,10 @@ import React, {
 import { account, ID } from "@/libs/AppWriteClient";
 import { User, UserContextTypes } from "../types";
 import { useRouter } from "next/navigation";
-import { useGetProfileByUserId } from "../hooks/profile/index";
+import {
+    useGetProfileByUserEmail,
+    useGetProfileByUserId,
+  } from "../hooks/profile/index";
 import { useCreateProfile } from "../hooks/profile/index";
 import { success, error } from "../utils/toast";
 
@@ -59,7 +62,8 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
                 promise?.$id,
                 name,
                 String(process.env.NEXT_PUBLIC_PLACEHOLDER_DEAFULT_IMAGE_ID),
-                ""
+                "",
+                email,
             );
             await checkUser("register");
             return true;
@@ -73,6 +77,10 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const login = async (email: string, password: string) => {
         try {
             // Step 1: Attempt to create an email session
+            const profile = await useGetProfileByUserEmail(email);
+            if (!profile.emailFound) {
+                error("New User ? Please Register First ");
+            }
             await account.createEmailSession(email, password);
             checkUser("login");
             return true;

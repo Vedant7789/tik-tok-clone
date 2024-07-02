@@ -9,7 +9,8 @@ const useCreateProfile = async (
   userId: string,
   name: string,
   image: string,
-  bio: string
+  bio: string,
+  email: string
 ) => {
   try {
     await database.createDocument(
@@ -21,6 +22,7 @@ const useCreateProfile = async (
         name: name,
         image: image,
         bio: bio,
+        email: email,
       }
     );
   } catch (error) {
@@ -47,6 +49,31 @@ const useGetProfileByUserId = async (userId: string) => {
     throw error;
   }
 };
+
+const useGetProfileByUserEmail = async (
+  email: string
+): Promise<{ emailFound: boolean }> => {
+  try {
+    const response = await database.listDocuments(
+      NEXT_PUBLIC_DATABASE_ID,
+      String(process.env.NEXT_PUBLIC_COLLECTION_ID_PROFILE),
+      [Query.equal("email", email)]
+    );
+    const documents = response.documents;
+    if (documents.length === 0) {
+      return {
+        emailFound: false,
+      };
+    } else {
+      return {
+        emailFound: true,
+      };
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 const useGetRandomUsers = async () => {
   try {
     const profileResult = await database.listDocuments(
@@ -131,4 +158,5 @@ export {
   useGetRandomUsers,
   useSearchProfilesByName,
   useCreateProfile,
+  useGetProfileByUserEmail,
 };
