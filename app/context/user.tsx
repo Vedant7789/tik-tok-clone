@@ -80,6 +80,7 @@ const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             const profile = await useGetProfileByUserEmail(email);
             if (!profile.emailFound) {
                 error("New User ? Please Register First ");
+                return false;
             }
             await account.createEmailSession(email, password);
             checkUser("login");
