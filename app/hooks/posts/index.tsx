@@ -2,7 +2,6 @@ import { database, ID, Query, storage } from "@/libs/AppWriteClient";
 import { useGetProfileByUserId } from "../profile";
 import { useDeleteLike, useGetLikesByPostId } from "../likes";
 import { useDeleteComment, useGetCommentsByPostId } from "../comments";
-import { s3, s3Bucket } from "@/libs/S3";
 
 const NEXT_PUBLIC_DATABASE_ID = String(process.env.NEXT_PUBLIC_DATABASE_ID);
 const NEXT_PUBLIC_COLLECTION_ID_POST = String(process.env.NEXT_PUBLIC_COLLECTION_ID_POST);
