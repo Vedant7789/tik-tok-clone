@@ -73,7 +73,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                         playsInline
                         onClick={handleVideoClick}
                         className="object-cover h-full w-full aspect-auto"
-                        src={useCreateBucketUrl(post?.video_url)}
+                        src={post?.video_url}
                     />
                     {showIcon && (
                         <div className="absolute z-10 w-full h-full flex items-center justify-center">
