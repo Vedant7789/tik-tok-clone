@@ -7,27 +7,28 @@ import { s3, s3Bucket } from "@/libs/S3";
 const NEXT_PUBLIC_DATABASE_ID = String(process.env.NEXT_PUBLIC_DATABASE_ID);
 const NEXT_PUBLIC_COLLECTION_ID_POST = String(process.env.NEXT_PUBLIC_COLLECTION_ID_POST);
 
-const useCreatePost = async (file: File, userId: string, caption: string, catalystLink: string, twitterLink: string) => {
-    let videoId = Math.random().toString(36).slice(2, 22);
+import axios from 'axios';
 
-    // Upload file to S3
-    const uploadParams = {
-        Bucket: s3Bucket,
-        Key: videoId,
-        Body: file,
-        ContentType: file.type,
-    };
+const useCreatePost = async (file: File, userId: string, caption: string, catalystLink: string, twitterLink: string) => {
+  const videoId = Math.random().toString(36).slice(2, 22);
+  const reader = new FileReader();
+
+  reader.readAsDataURL(file);
+
+  reader.onloadend = async () => {
+    const base64Data = reader.result?.split(',')[1];
 
     try {
-        const uploadResult = await s3.upload(uploadParams).promise();
+      const response = await axios.post('/api/uploads', {
+        file: base64Data,
+        fileName: videoId,
+      });
 
-        // Get the URL of the uploaded file
-        const fileUrl = uploadResult.Location;
+      const fileUrl = response.data.fileUrl;
 
-        // Create a document in Appwrite with the file URL
-        await database.createDocument(
-            NEXT_PUBLIC_DATABASE_ID,
-            NEXT_PUBLIC_COLLECTION_ID_POST,
+      await database.createDocument(
+        NEXT_PUBLIC_DATABASE_ID,
+        NEXT_PUBLIC_COLLECTION_ID_POST,
             ID.unique(),
             {
                 user_id: userId,
@@ -39,8 +40,9 @@ const useCreatePost = async (file: File, userId: string, caption: string, cataly
             }
         );
     } catch (error) {
-        throw error;
+      throw error;
     }
+  };
 };
 
 const useGetAllPosts = async () => {
