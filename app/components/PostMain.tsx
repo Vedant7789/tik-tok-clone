@@ -160,7 +160,7 @@ export default function PostMain({ post }: PostMainCompTypes) {
                                     muted
                                     playsInline
                                     className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
-                                    src={useCreateBucketUrl(post?.video_url)}
+                                    src={post?.video_url}
                                 />
                                 {showIcon && (
                                     <div className="absolute z-10 w-full h-full flex items-center justify-center">

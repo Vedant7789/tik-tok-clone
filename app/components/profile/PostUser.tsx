@@ -32,7 +32,7 @@ export default function PostUser({ post }: PostUserCompTypes) {
                             muted
                             loop
                             className="aspect-[3/4] object-cover rounded-md" 
-                            src={useCreateBucketUrl(post.video_url)}
+                            src={post.video_url}
                         />
                     </Link>
                 )}

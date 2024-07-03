@@ -100,7 +100,7 @@ export default function Post({ params }: PostPageTypes) {
             {postById?.video_url ? (
               <video
                 className="fixed object-cover w-full my-auto z-[0] h-screen"
-                src={useCreateBucketUrl(postById?.video_url)}
+                src={postById?.video_url}
               />
             ) : null}
 
@@ -112,7 +112,7 @@ export default function Post({ params }: PostPageTypes) {
                   loop
                   muted
                   className="h-screen mx-auto"
-                  src={useCreateBucketUrl(postById.video_url)}
+                  src={postById.video_url}
                 />
               ) : null}
             </div>
