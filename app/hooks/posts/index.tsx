@@ -16,7 +16,7 @@ const useCreatePost = async (file: File, userId: string, caption: string, cataly
   reader.readAsDataURL(file);
 
   reader.onloadend = async () => {
-    const base64Data = reader.result?.split(',')[1];
+    const base64Data = (reader.result as string)?.split(',')[1];
 
     try {
       const response = await axios.post('/api/uploads', {
