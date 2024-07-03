@@ -11,7 +11,7 @@ import { MdWhereToVote } from "react-icons/md";
 import { BsTwitter } from "react-icons/bs";
 import { FaPlay, FaPause } from "react-icons/fa";
 
-export default function PostMain({ post }: PostMainCompTypes) {
+export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes & { isAutoplayEnabled: boolean }) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const mobileVideoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
@@ -66,8 +66,10 @@ export default function PostMain({ post }: PostMainCompTypes) {
             <div className="block md:hidden">
                 <div id={`PostMain-${post.id}`} onClick={handleMobileVideoClick} className="flex border-b h-[100vh] md:h-full w-[100vw]">
                     <video
+                        key={isAutoplayEnabled? "autoplay" : "noautoplay"}
                         id={`video-${post.id}`}
                         ref={mobileVideoRef}
+                        autoPlay={isAutoplayEnabled}
                         loop
                         controls={false}
                         playsInline
@@ -153,10 +155,11 @@ export default function PostMain({ post }: PostMainCompTypes) {
                                 onClick={handleVideoClick}
                             >
                                 <video
+                                    key={isAutoplayEnabled? "autoplay" : "noautoplay"}
                                     id={`video-${post.id}`}
                                     ref={videoRef}
                                     loop
-                                    autoPlay
+                                    autoPlay={isAutoplayEnabled}
                                     muted
                                     playsInline
                                     className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
