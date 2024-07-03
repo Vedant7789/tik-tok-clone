@@ -28,9 +28,17 @@ export default function Upload() {
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
-
+    
         if (files && files.length > 0) {
+            setError(null);
             const file = files[0];
+            const fileSizeInGB = file.size / (1024 * 1024 * 1024); // Convert size to GB
+    
+            if (fileSizeInGB > 2) {
+                setError({ type: "File", message: "The video size should not exceed 2 GB" });
+                return;
+            }
+    
             const fileUrl = URL.createObjectURL(file);
             setFileDisplay(fileUrl);
             setFile(file);
@@ -80,6 +88,7 @@ export default function Upload() {
     };
 
     const createNewPost = async () => {
+        setError(null);
         let isError = validate();
         if (isError) return;
         if (!file || !contextUser?.user) return;
