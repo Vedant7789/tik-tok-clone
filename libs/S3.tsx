@@ -1,4 +1,3 @@
-"use server"
 
 import AWS from 'aws-sdk';
 
