@@ -22,35 +22,42 @@ const useCreatePost = async (
 
   reader.readAsDataURL(file);
 
-  reader.onloadend = async () => {
-    const base64Data = (reader.result as string)?.split(",")[1];
+  await new Promise((resolve, reject) => {
+    reader.onloadend = async () => {
+      const base64Data = (reader.result as string)?.split(",")[1];
 
-    try {
-      const response = await axios.post("http://localhost:8000/api/upload", {
-        file: base64Data,
-        fileName: videoId,
-      });
+      try {
+        const response = await axios.post("https://seashell-app-2nbul.ondigitalocean.app/api/upload", {
+          file: base64Data,
+          fileName: videoId,
+        });
 
-      const fileUrl = response.data.fileUrl;
-    //   console.log(fileUrl);
+        console.log(response);
 
-      await database.createDocument(
-        NEXT_PUBLIC_DATABASE_ID,
-        NEXT_PUBLIC_COLLECTION_ID_POST,
-        ID.unique(),
-        {
-          user_id: userId,
-          text: caption,
-          video_url: fileUrl,
-          proposal_link: catalystLink,
-          twitter_link: twitterLink,
-          created_at: new Date().toISOString(),
-        }
-      );
-    } catch (error) {
-      throw error;
-    }
-  };
+        const fileUrl = response.data.fileUrl;
+        //   console.log(fileUrl);
+
+        await database.createDocument(
+          NEXT_PUBLIC_DATABASE_ID,
+          NEXT_PUBLIC_COLLECTION_ID_POST,
+          ID.unique(),
+          {
+            user_id: userId,
+            text: caption,
+            video_url: fileUrl,
+            proposal_link: catalystLink,
+            twitter_link: twitterLink,
+            created_at: new Date().toISOString(),
+          }
+        );
+
+        resolve(true);
+      } catch (error) {
+        throw error;
+      }
+    };
+    reader.onerror = (error) => reject(error);
+  });
 };
 
 const useGetAllPosts = async () => {
