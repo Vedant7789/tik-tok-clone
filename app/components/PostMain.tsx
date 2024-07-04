@@ -53,9 +53,13 @@ export default function PostMain({
     const video = videoRef.current;
     if (video) {
       if (video.paused) {
+        video.muted = false;
+
         video.play();
         setIsPlaying(true);
       } else {
+        video.muted = true;
+
         video.pause();
         setIsPlaying(false);
       }
@@ -238,8 +242,8 @@ export default function PostMain({
                   id={`video-${post.id}`}
                   ref={videoRef}
                   loop
-                  autoPlay={isAutoplayEnabled}
-                  muted
+                //   autoPlay={isAutoplayEnabled}
+                //   muted
                   playsInline
                   className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
                   src={post?.video_url}
