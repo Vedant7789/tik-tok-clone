@@ -150,9 +150,9 @@ export default function Upload() {
                                 </p>
                                 <p className="mt-12 text-gray-400 text-sm">MP4</p>
                                 <p className="mt-2 text-gray-400 text-[13px]">
-                                    Up to 30 minutes
+                                    Up to 99 seconds
                                 </p>
-                                <p className="mt-2 text-gray-400 text-[13px]">Less than 2 GB</p>
+                                <p className="mt-2 text-gray-400 text-[13px]">Less than 100 MB</p>
                                 <label
                                     htmlFor="fileInput"
                                     className="px-2 py-1.5 mt-8 text-black text-[15px] w-[80%] bg-[#fff] rounded-sm cursor-pointer"

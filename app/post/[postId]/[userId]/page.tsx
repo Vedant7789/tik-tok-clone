@@ -76,12 +76,12 @@ export default function Post({ params }: PostPageTypes) {
         {...swipeHandlers}
       >
         <div className="lg:w-[calc(100%-540px)] h-full relative">
-          <Link
-            href={`/profile/${params?.userId}`}
+          <div
+            onClick={router.back}
             className="absolute text-white z-20 m-5 rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
           >
             <AiOutlineClose size="27" />
-          </Link>
+          </div>
 
           <div>
             <button
