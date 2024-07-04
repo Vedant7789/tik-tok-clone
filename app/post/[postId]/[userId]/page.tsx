@@ -95,12 +95,6 @@ export default function Post({ params }: PostPageTypes) {
             </button>
           </div>
 
-          {/* <img 
-                        className="absolute z-20 top-[18px] left-[70px] rounded-full lg:mx-0 mx-auto" 
-                        width="45" 
-                        src="/images/tiktok-logo-small.png"
-                    /> */}
-
           <ClientOnly>
             {postById?.video_url ? (
               <video
@@ -112,10 +106,10 @@ export default function Post({ params }: PostPageTypes) {
             <div className="bg-black bg-opacity-70 lg:min-w-[480px] z-10 relative">
               {postById?.video_url ? (
                 <video
+                  playsInline
                   autoPlay
-                  controls
+                  controls={false}
                   loop
-                  muted
                   className="h-screen mx-auto"
                   src={postById.video_url}
                 />
