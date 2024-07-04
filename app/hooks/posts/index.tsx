@@ -27,10 +27,13 @@ const useCreatePost = async (
       const base64Data = (reader.result as string)?.split(",")[1];
 
       try {
-        const response = await axios.post("https://seashell-app-2nbul.ondigitalocean.app/api/upload", {
-          file: base64Data,
-          fileName: videoId,
-        });
+        const response = await axios.post(
+          "https://seashell-app-2nbul.ondigitalocean.app/api/upload",
+          {
+            file: base64Data,
+            fileName: videoId,
+          }
+        );
 
         console.log(response);
 
@@ -53,6 +56,7 @@ const useCreatePost = async (
 
         resolve(true);
       } catch (error) {
+        reject(error);
         throw error;
       }
     };
