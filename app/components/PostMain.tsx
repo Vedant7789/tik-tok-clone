@@ -11,6 +11,7 @@ import { MdWhereToVote } from "react-icons/md";
 import { BsTwitter } from "react-icons/bs";
 import { FaPlay, FaPause, FaShare } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 export default function PostMain({
   post,
@@ -136,7 +137,13 @@ export default function PostMain({
                     }}
                     className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur"
                   >
-                    <MdWhereToVote className="-translate-y-[3px]" />
+                    <Image 
+                        src={"/images/proposal.svg"}
+                        width={1000}
+                        height={1000}
+                        className="w-4 h-4 object-cover -translate-y-[2px]"
+                        alt="proposal svg"
+                    />
                     <span className="hidden sm:inline-block">Proposal</span>
                   </button>
                 )}
@@ -198,7 +205,13 @@ export default function PostMain({
                     onClick={() => openLink(post.proposal_link)}
                     className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300"
                   >
-                    <MdWhereToVote className="-translate-y-[3px]" />
+                    <Image 
+                        src={"/images/proposal.svg"}
+                        width={1000}
+                        height={1000}
+                        className="w-4 h-4 object-cover -translate-y-[2px]"
+                        alt="proposal svg"
+                    />
                     <span className="hidden sm:inline-block">Proposal</span>
                   </button>
                 )}
