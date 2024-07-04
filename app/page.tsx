@@ -103,7 +103,7 @@ export default function Home() {
           </div>
         )}
       </HomeLayout>
-      <Modal isVisible={isModalVisible} onClose={handleModalClose} />
+      <Modal isVisible={isModalVisible && !loading} onClose={handleModalClose} />
     </>
   );
 }
