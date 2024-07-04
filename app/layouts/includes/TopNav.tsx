@@ -71,13 +71,13 @@ export default function TopNav() {
         <>
             <div
                 id="TopNav"
-                className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8 font-neue-regular tracking-wide"
+                className="fixed left-0 right-0 top-0 z-50 w-full px-4 md:px-8  font-neue-regular tracking-wide"
             >
                 <div
-                    className={`relative md:mt-0 mt-2 flex h-20 w-full items-center justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${pathname === "/" ? "" : ""
+                    className={`relative md:mt-0 mt-2 flex h-20 w-full items-center bg-black/30 justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${pathname === "/" ? "" : ""
                         }`}
                 >
-                    <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full" href="/">
+                    <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full shadow-2xl shadow-black" href="/">
                         {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
                         99pitch
                     </Link>
@@ -127,7 +127,7 @@ export default function TopNav() {
                     <div className=" md:flex-1 md:w-full flex items-center md:justify-end gap-3 ">
                         <button
                             onClick={() => goTo()}
-                            className="flex items-center border rounded-sm py-[6px] hover:bg-black/50 px-1.5 md:pr-0 md:pl-1.5 font-offbit-101-bold tracking-widest "
+                            className="flex items-center border border-gray-300/50 rounded-sm py-[6px] hover:bg-black/50 px-1.5 md:pr-0 md:pl-1.5 font-offbit-101-bold tracking-widest "
                             style={{ fontVariant: "small-caps" }}
                         >
                             <MdUpload size="22" />
@@ -135,7 +135,7 @@ export default function TopNav() {
                         </button>
                         <button
                             onClick={() => toggleConnectModal(true)}
-                            className={`flex items-center border rounded-sm py-[6px] hover:bg-black/50 hover:text-white md:pl-1.5 ${connected && "bg-[white] text-black"
+                            className={`flex items-center border border-gray-300/50 rounded-sm py-[6px] hover:bg-black/50 hover:text-white md:pl-1.5 ${connected && "bg-[white] text-black"
                                 } transition-[background] font-offbit-101-bold tracking-widest`}
                             style={{ fontVariant: "small-caps" }}
                         >
