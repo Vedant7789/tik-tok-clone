@@ -3,7 +3,7 @@
 import Comments from "@/app/components/post/Comments";
 import CommentsHeader from "@/app/components/post/CommentsHeader";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import ClientOnly from "@/app/components/ClientOnly";
@@ -14,11 +14,15 @@ import { useCommentStore } from "@/app/stores/comment";
 import { useSwipeable } from "react-swipeable";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import Head from "next/head";
+import { FaRegCommentDots } from "react-icons/fa";
+import "../../../styles/commentInfoSection.css";
 
 export default function Post({ params }: PostPageTypes) {
   let { postById, postsByUser, setPostById, setPostsByUser } = usePostStore();
   let { setLikesByPost } = useLikeStore();
   let { setCommentsByPost } = useCommentStore();
+
+  const [infoSection, setInfoSection] = useState(false);
 
   const router = useRouter();
   const pathname = window.location.href;
@@ -33,6 +37,17 @@ export default function Post({ params }: PostPageTypes) {
     };
 
     document.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    if (window.innerWidth >= 768) {
+      setInfoSection(true)
+    }
+
+    window.addEventListener("resize", () => {
+      // console.log("resize", window.innerWidth)
+      if (window.innerWidth >= 768) {
+        setInfoSection(true)
+      }
+    })
 
     return () => {
       document.removeEventListener("touchmove", handleTouchMove);
@@ -76,12 +91,11 @@ export default function Post({ params }: PostPageTypes) {
         {...swipeHandlers}
       >
         <div className="lg:w-[calc(100%-540px)] h-full relative">
-          <div
-            onClick={router.back}
-            className="absolute text-white z-20 m-5 rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
+          {infoSection && <button onClick={() => setInfoSection(false)}
+            className="md:hidden absolute text-white z-20 m-5 rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
           >
             <AiOutlineClose size="27" />
-          </div>
+          </button>}
 
           <div>
             <button
@@ -96,6 +110,13 @@ export default function Post({ params }: PostPageTypes) {
               className="absolute z-20 right-4 top-20 flex items-center justify-center rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
             >
               <BiChevronDown size="30" color="#FFFFFF" />
+            </button>
+
+            <button
+              onClick={() => setInfoSection(prev => !prev)}
+              className="md:hidden absolute z-20 right-4 top-36 flex items-center justify-center rounded-full bg-gray-300/10 p-1.5 hover:bg-gray-300/50"
+            >
+              <FaRegCommentDots size="30" color="#FFFFFF" />
             </button>
           </div>
 
@@ -122,9 +143,9 @@ export default function Post({ params }: PostPageTypes) {
           </ClientOnly>
         </div>
 
-        <div
+        {infoSection && <div
           id="InfoSection"
-          className="lg:max-w-[550px] h-[45%]  md:h-full bottom-0 left-0 right-0 md:rounded-none rounded-t-3xl z-[99] w-full  bg-[#121316] text-white md:relative absolute"
+          className="infoSection lg:max-w-[550px] h-[45%]  md:h-full bottom-0 left-0 right-0 md:rounded-none rounded-t-3xl z-[99] w-full  bg-[#121316] text-white md:relative absolute"
         >
           <div className="py-3 md:py-7" />
 
@@ -134,7 +155,7 @@ export default function Post({ params }: PostPageTypes) {
             ) : null}
           </ClientOnly>
           <Comments params={params} />
-        </div>
+        </div>}
       </div>
     </>
   );
