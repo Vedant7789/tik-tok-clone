@@ -24,11 +24,13 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
         if (postMainElement) {
             let observer = new IntersectionObserver((entries) => {
                 entries[0].isIntersecting ? video.play() : video.pause();
+                console.log(entries[0].isIntersecting)
             }, { threshold: [0.6] });
 
             observer.observe(postMainElement);
+            // console.log(observer.observe,isPlaying,)
         }
-    }, []);
+    }, [videoRef]);
 
     const openLink = (url: string | null) => url && window.open(url, "_blank");
 
@@ -66,10 +68,10 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
             <div className="block md:hidden">
                 <div id={`PostMain-${post.id}`} onClick={handleMobileVideoClick} className="flex border-b h-[100vh] md:h-full w-[100vw]">
                     <video
-                        key={isAutoplayEnabled? "autoplay" : "noautoplay"}
+                        // key={isAutoplayEnabled? "autoplay" : "noautoplay"}
                         id={`video-${post.id}`}
                         ref={mobileVideoRef}
-                        autoPlay={isAutoplayEnabled}
+                        // autoPlay={isAutoplayEnabled}
                         loop
                         controls={false}
                         playsInline
