@@ -185,7 +185,7 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                     ref={videoRef}
                                     loop
                                     autoPlay={isAutoplayEnabled}
-                                    muted
+                                    // muted
                                     playsInline
                                     className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
                                     src={post?.video_url}
