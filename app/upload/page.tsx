@@ -89,10 +89,10 @@ export default function Upload() {
 
     const createNewPost = async () => {
         setError(null);
-        setIsUploading(true);
         let isError = validate();
-        if (isError) return;
-        if (!file || !contextUser?.user) return;
+        if (isError) {setIsUploading(false); return;};
+        if (!file || !contextUser?.user) {setIsUploading(false); return;};
+        
         setIsUploading(true);
 
         try {
@@ -102,7 +102,7 @@ export default function Upload() {
         } catch (error) {
             console.log(error);
             setIsUploading(false);
-            alert(error);
+            // alert(error);
         }
     };
 
