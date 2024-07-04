@@ -234,6 +234,7 @@ export default function PostMain({
 
             <div className="mt-2.5 relative justify-center flex">
               <div
+                id={`PostMain-${post.id}`}
                 className="relative aspect-[260/480] w-full min-w-[300px] max-w-[450px] flex items-center bg-black rounded-xl cursor-pointer"
                 onClick={handleVideoClick}
               >
@@ -242,8 +243,8 @@ export default function PostMain({
                   id={`video-${post.id}`}
                   ref={videoRef}
                   loop
-                //   autoPlay={isAutoplayEnabled}
-                //   muted
+                  //   autoPlay={isAutoplayEnabled}
+                  //   muted
                   playsInline
                   className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
                   src={post?.video_url}
