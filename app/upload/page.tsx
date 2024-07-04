@@ -32,12 +32,12 @@ export default function Upload() {
     if (files && files.length > 0) {
       setError(null);
       const file = files[0];
-      const fileSizeInGB = file.size / (1024 * 1024 * 1024); // Convert size to GB
+      const fileSizeInMB = file.size / (1024 * 1024); // Convert size to MB
 
-      if (fileSizeInGB > 2) {
+      if (fileSizeInMB > 100) {
         setError({
           type: "File",
-          message: "The video size should not exceed 2 GB",
+          message: "The video size should not exceed 100 MB",
         });
         return;
       }
