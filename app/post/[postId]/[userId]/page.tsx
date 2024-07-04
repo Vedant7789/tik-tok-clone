@@ -13,6 +13,7 @@ import { useLikeStore } from "@/app/stores/like";
 import { useCommentStore } from "@/app/stores/comment";
 import { useSwipeable } from "react-swipeable";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
+import Head from "next/head";
 
 export default function Post({ params }: PostPageTypes) {
   let { postById, postsByUser, setPostById, setPostsByUser } = usePostStore();
@@ -60,12 +61,15 @@ export default function Post({ params }: PostPageTypes) {
 
   return (
     <>
-      <meta property="og:image" content={`${postById?.video_url}`} />
-      <meta property="og:video" content={`${postById?.video_url}`} />
-      <meta property="og:url" content={pathname} />
-      <meta property="og:title" content="99pitch" />
-      <meta property="og:description" content={`${postById?.text}`} />
-      <meta property="og:type" content="video" />
+      <Head>
+        <meta property="og:image" content={`${postById?.video_url}`} />
+        <meta property="og:video" content={`${postById?.video_url}`} />
+        <meta property="og:url" content={pathname} />
+        <meta property="og:title" content="99pitch" />
+        <meta property="og:description" content={`${postById?.text}`} />
+        <meta property="og:type" content="video" />
+      </Head>
+
       <div
         id="PostPage"
         className="w-full h-screen fixed left-0 top-0 z-[0] flex justify-center items-center bg-[#000]/60 backdrop-blur-lg"
