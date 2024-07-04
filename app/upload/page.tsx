@@ -52,7 +52,7 @@ export default function Upload() {
           });
           URL.revokeObjectURL(fileDisplay);
           setFileDisplay("");
-          setFile(null); 
+          setFile(null);
         } else {
           const fileUrl = URL.createObjectURL(file);
           setFileDisplay(fileUrl);
@@ -118,24 +118,36 @@ export default function Upload() {
     return isError;
   };
 
-    const createNewPost = async () => {
-        setError(null);
-        let isError = validate();
-        if (isError) {setIsUploading(false); return;};
-        if (!file || !contextUser?.user) {setIsUploading(false); return;};
-        
-        setIsUploading(true);
+  const createNewPost = async () => {
+    setError(null);
+    let isError = validate();
+    if (isError) {
+      setIsUploading(false);
+      return;
+    }
+    if (!file || !contextUser?.user) {
+      setIsUploading(false);
+      return;
+    }
 
-        try {
-            await useCreatePost(file, contextUser?.user?.id, caption, catalystLink, twitterLink);
-            router.push(`/profile/${contextUser?.user?.id}`);
-            setIsUploading(false);
-        } catch (error) {
-            console.log(error);
-            setIsUploading(false);
-            // alert(error);
-        }
-    };
+    setIsUploading(true);
+
+    try {
+      await useCreatePost(
+        file,
+        contextUser?.user?.id,
+        caption,
+        catalystLink,
+        twitterLink
+      );
+      router.push(`/profile/${contextUser?.user?.id}`);
+      setIsUploading(false);
+    } catch (error) {
+      console.log(error);
+      setIsUploading(false);
+      // alert(error);
+    }
+  };
 
   useKeyPress(createNewPost, "Enter");
 
@@ -177,34 +189,36 @@ export default function Upload() {
                                     hover:bg-white/10 
                                     cursor-pointer
                                 "
-                            >
-                                <BiSolidCloudUpload size="40" color="#b3b3b1" />
-                                <p className="mt-4 text-[17px]">Select video to upload</p>
-                                <p className="mt-1.5 text-gray-500 text-[13px]">
-                                    Or drag and drop a file
-                                </p>
-                                <p className="mt-12 text-gray-400 text-sm">MP4</p>
-                                <p className="mt-2 text-gray-400 text-[13px]">
-                                    Up to 99 seconds
-                                </p>
-                                <p className="mt-2 text-gray-400 text-[13px]">Less than 100 MB</p>
-                                <label
-                                    htmlFor="fileInput"
-                                    className="px-2 py-1.5 mt-8 text-black text-[15px] w-[80%] bg-[#fff] rounded-sm cursor-pointer"
-                                >
-                                    Select file
-                                </label>
-                                <input
-                                    type="file"
-                                    id="fileInput"
-                                    onChange={onChange}
-                                    hidden
-                                    accept=".mp4"
-                                />
-                            </label>
-                        ) : (
-                            <div
-                                className="
+              >
+                <BiSolidCloudUpload size="40" color="#b3b3b1" />
+                <p className="mt-4 text-[17px]">Select video to upload</p>
+                <p className="mt-1.5 text-gray-500 text-[13px]">
+                  Or drag and drop a file
+                </p>
+                <p className="mt-12 text-gray-400 text-sm">MP4</p>
+                <p className="mt-2 text-gray-400 text-[13px]">
+                  Up to 99 seconds
+                </p>
+                <p className="mt-2 text-gray-400 text-[13px]">
+                  Less than 100 MB
+                </p>
+                <label
+                  htmlFor="fileInput"
+                  className="px-2 py-1.5 mt-8 text-black text-[15px] w-[80%] bg-[#fff] rounded-sm cursor-pointer"
+                >
+                  Select file
+                </label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  onChange={onChange}
+                  hidden
+                  accept=".mp4"
+                />
+              </label>
+            ) : (
+              <div
+                className="
                                     md:mx-0
                                     mx-auto
                                     mt-4

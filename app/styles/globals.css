@@ -27,6 +27,7 @@ body {
     overflow-y: auto;
     max-height: 100dvh;
     /* scroll-padding-top: 10vh; */
+    overscroll-behavior-y: contain; /* Prevents overscrolling */
 }
 .snap_childrens {
     scroll-snap-align: start;
