@@ -10,6 +10,7 @@ import { PostMainCompTypes } from "../types";
 import { MdWhereToVote } from "react-icons/md";
 import { BsTwitter } from "react-icons/bs";
 import { FaPlay, FaPause, FaShare } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes & { isAutoplayEnabled: boolean }) {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -116,10 +117,15 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                         <span className="hidden sm:inline-block">Profile</span>
                                     </button>
                                 }
-                                 <Link href={`${window.origin}/post/${post.id}/${post.user_id}`} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                 <button className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur"
+                                    onClick={async()=>{
+                                        toast.success("Link copied to clipboard")
+                                        await navigator.clipboard.writeText(`${window.origin}/post/${post.id}/${post.user_id}`)
+                                    }}
+                                 >
                                         <FaShare size={15} className="mt-[-3px]"/>
                                         <span className="hidden sm:inline-block">Share</span>
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -156,10 +162,15 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                         <span className="hidden sm:inline-block">Profile</span>
                                     </button>
                                 }
-                                <Link href={`/post/${post.id}/${post.user_id}`} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                <button
+                                onClick={async()=>{
+                                    toast.success("Link copied to clipboard")
+                                    await navigator.clipboard.writeText(`${window.origin}/post/${post.id}/${post.user_id}`)
+                                }}
+                                className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
                                         <FaShare size={15} className="mt-[-3px]"/>
                                         <span className="hidden sm:inline-block">Share</span>
-                                </Link>
+                                </button>
                             </div>
                         </div>
 
