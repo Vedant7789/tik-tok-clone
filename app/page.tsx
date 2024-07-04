@@ -121,10 +121,10 @@ function Modal({
     <div className="fixed inset-0 z-[100] bg-black bg-opacity-50 flex justify-center items-center">
       <div className="flex justify-center flex-col bg-[#121316] py-12 px-12 rounded-lg shadow-lg w-full max-w-[480px] h-fit mx-4">
         <h2 className="text-3xl mb-4 font-offbit-101-bold">
-          Hey, Thanks for testing out!
+          Welcome to the beta version of 99pitch.
         </h2>
         <p className="text-lg mb-4 font-neue-regular">
-          Please give us feedback. Press continue to play.
+          You can press continue to scroll pitches and start uploading your pitches. Remember to tag us in tweets and share your experience, your feedback is invaluable as we continue to improve.
         </p>
         <button
           onClick={onClose}
