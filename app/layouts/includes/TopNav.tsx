@@ -77,9 +77,13 @@ export default function TopNav() {
                     className={`relative md:mt-0 mt-2 flex h-20 w-full items-center bg-black/30 justify-between rounded-xl  px-5 backdrop-blur-lg md:px-10 ${pathname === "/" ? "" : ""
                         }`}
                 >
-                    <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full shadow-2xl shadow-black" href="/">
+                    <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full shadow-2xl shadow-black relative -translate-y-1 " href="/">
                         {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
                         99pitch
+
+                        <div className="absolute top-[60%] md:top-[90%] left-0 md:left-1 text-[10px] md:text-xs ">
+                            by Trivolve Tech
+                        </div>
                     </Link>
 
                     <div className=" md:flex-1 md:w-full md:self-center relative hidden md:flex items-center justify-end md:justify-center bg-black/40 p-1 rounded-full max-w-[430px] w-full border border-white/30">

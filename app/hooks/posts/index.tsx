@@ -35,7 +35,7 @@ const useCreatePost = async (
           }
         );
 
-        console.log(response);
+        // console.log(response);
 
         const fileUrl = response.data.fileUrl;
         //   console.log(fileUrl);

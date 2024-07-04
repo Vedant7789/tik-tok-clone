@@ -84,7 +84,7 @@ export default function Home() {
         {loading ? (
           <Loader />
         ) : (
-          <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
+          <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 sm:py-10 lg:py-8 xl:py-5 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
             <ClientOnly>
               <div
                 ref={scrollContainerRef}
