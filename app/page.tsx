@@ -18,6 +18,7 @@ export default function Home() {
     };
     return (
         <>
+        <title>99pitch</title>
             <meta name="description" content={"99pitch"} />
             {/* <link rel="icon" href="" /> */}
 

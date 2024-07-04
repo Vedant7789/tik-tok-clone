@@ -11,7 +11,6 @@ import { type Post, PostPageTypes } from "@/app/types";
 import { usePostStore } from "@/app/stores/post";
 import { useLikeStore } from "@/app/stores/like";
 import { useCommentStore } from "@/app/stores/comment";
-import useCreateBucketUrl from "@/app/hooks/useCreateBucketUrl";
 import { useSwipeable } from "react-swipeable";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
@@ -21,13 +20,13 @@ export default function Post({ params }: PostPageTypes) {
   let { setCommentsByPost } = useCommentStore();
 
   const router = useRouter();
+  const pathname = window.location.href;
 
   useEffect(() => {
     setPostById(params.postId);
     setCommentsByPost(params.postId);
     setLikesByPost(params.postId);
     setPostsByUser(params.userId);
-
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault();
     };
@@ -61,6 +60,12 @@ export default function Post({ params }: PostPageTypes) {
 
   return (
     <>
+      <meta property="og:image" content={`${postById?.video_url}`} />
+      <meta property="og:video" content={`${postById?.video_url}`} />
+      <meta property="og:url" content={pathname} />
+      <meta property="og:title" content="99pitch" />
+      <meta property="og:description" content={`${postById?.text}`} />
+      <meta property="og:type" content="video" />
       <div
         id="PostPage"
         className="w-full h-screen fixed left-0 top-0 z-[0] flex justify-center items-center bg-[#000]/60 backdrop-blur-lg"
