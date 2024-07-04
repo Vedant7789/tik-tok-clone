@@ -34,10 +34,10 @@ export default function Upload() {
       const file = files[0];
       const fileSizeInMB = file.size / (1024 * 1024); // Convert size to MB
 
-      if (fileSizeInMB > 100) {
+      if (fileSizeInMB > 50) {
         setError({
           type: "File",
-          message: "The video size should not exceed 100 MB",
+          message: "The video size should not exceed 50 MB",
         });
         return;
       }
@@ -200,7 +200,7 @@ export default function Upload() {
                   Up to 99 seconds
                 </p>
                 <p className="mt-2 text-gray-400 text-[13px]">
-                  Less than 100 MB
+                  Less than 50 MB
                 </p>
                 <label
                   htmlFor="fileInput"

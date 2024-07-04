@@ -21,47 +21,47 @@ export default function Home() {
 
   // Friction in Scrolling --Start--
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let startY = 0;
-    let startTime = 0;
+  // useEffect(() => {
+  //   let startY = 0;
+  //   let startTime = 0;
 
-    const handleTouchStart = (e: TouchEvent) => {
-      startY = e.touches[0].clientY;
-      startTime = new Date().getTime();
-    };
+  //   const handleTouchStart = (e: TouchEvent) => {
+  //     startY = e.touches[0].clientY;
+  //     startTime = new Date().getTime();
+  //   };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      const moveY = e.touches[0].clientY;
-      const distance = moveY - startY;
-      const timeElapsed = new Date().getTime() - startTime;
+  //   const handleTouchMove = (e: TouchEvent) => {
+  //     const moveY = e.touches[0].clientY;
+  //     const distance = moveY - startY;
+  //     const timeElapsed = new Date().getTime() - startTime;
 
-      if (timeElapsed < 500) {
-        // Within 500ms
-        e.preventDefault();
+  //     if (timeElapsed < 500) {
+  //       // Within 500ms
+  //       e.preventDefault();
 
-        if (!scrollContainerRef.current) return;
+  //       if (!scrollContainerRef.current) return;
 
-        scrollContainerRef.current.scrollBy({
-          top: distance * (distance > 0 ? -0.1 : -0.1), // Different friction for up and down
-          behavior: "smooth",
-        });
-      }
-    };
+  //       scrollContainerRef.current.scrollBy({
+  //         top: distance * (distance > 0 ? -0.1 : -0.1), // Different friction for up and down
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
 
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-    scrollContainer.addEventListener("touchstart", handleTouchStart);
-    scrollContainer.addEventListener("touchmove", handleTouchMove);
+  //   const scrollContainer = scrollContainerRef.current;
+  //   if (!scrollContainer) return;
+  //   scrollContainer.addEventListener("touchstart", handleTouchStart);
+  //   scrollContainer.addEventListener("touchmove", handleTouchMove);
 
-    return () => {
-      scrollContainer.removeEventListener("touchstart", handleTouchStart);
-      scrollContainer.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, [scrollContainerRef.current]);
+  //   return () => {
+  //     scrollContainer.removeEventListener("touchstart", handleTouchStart);
+  //     scrollContainer.removeEventListener("touchmove", handleTouchMove);
+  //   };
+  // }, [scrollContainerRef.current]);
 
-  // Friction in Scrolling --End--
+  // // Friction in Scrolling --End--
 
   return (
     <>
@@ -87,7 +87,6 @@ export default function Home() {
           <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 sm:py-10 lg:py-8 xl:py-5 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
             <ClientOnly>
               <div
-                ref={scrollContainerRef}
                 className="overflow-x-hidden max-h-full scroll_snapping"
               >
                 {allPosts.map((post, index) => (
@@ -104,7 +103,7 @@ export default function Home() {
           </div>
         )}
       </HomeLayout>
-      <Modal isVisible={isModalVisible} onClose={handleModalClose} />
+      <Modal isVisible={isModalVisible && !loading} onClose={handleModalClose} />
     </>
   );
 }
@@ -122,10 +121,10 @@ function Modal({
     <div className="fixed inset-0 z-[100] bg-black bg-opacity-50 flex justify-center items-center">
       <div className="flex justify-center flex-col bg-[#121316] py-12 px-12 rounded-lg shadow-lg w-full max-w-[480px] h-fit mx-4">
         <h2 className="text-3xl mb-4 font-offbit-101-bold">
-          Hey, Thanks for testing out!
+          Welcome to the beta version of 99pitch.
         </h2>
         <p className="text-lg mb-4 font-neue-regular">
-          Please give us feedback. Press continue to play.
+          You can press continue to scroll pitches and start uploading your pitches. Remember to tag us in tweets and share your experience, your feedback is invaluable as we continue to improve.
         </p>
         <button
           onClick={onClose}
