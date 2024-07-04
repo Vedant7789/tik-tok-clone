@@ -27,12 +27,12 @@ export default function Home() {
     let startY = 0;
     let startTime = 0;
 
-    const handleTouchStart = (e) => {
+    const handleTouchStart = (e: TouchEvent) => {
       startY = e.touches[0].clientY;
       startTime = new Date().getTime();
     };
 
-    const handleTouchMove = (e) => {
+    const handleTouchMove = (e: TouchEvent) => {
       const moveY = e.touches[0].clientY;
       const distance = moveY - startY;
       const timeElapsed = new Date().getTime() - startTime;
