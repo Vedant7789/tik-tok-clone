@@ -124,7 +124,7 @@ export default function Post({ params }: PostPageTypes) {
             {postById?.video_url ? (
               <video
                 className="fixed object-cover w-full my-auto z-[0] h-screen"
-                src={postById?.video_url}
+                src={postById?.video_url.replace("https://tiktok-catalyst.s3.ap-south-1.amazonaws.com", "https://99pitch.b-cdn.net")}
               />
             ) : null}
 
@@ -136,7 +136,7 @@ export default function Post({ params }: PostPageTypes) {
                   controls={false}
                   loop
                   className="h-screen mx-auto"
-                  src={postById.video_url}
+                  src={postById.video_url.replace("https://tiktok-catalyst.s3.ap-south-1.amazonaws.com", "https://99pitch.b-cdn.net")}
                 />
               ) : null}
             </div>

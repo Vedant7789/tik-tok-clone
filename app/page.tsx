@@ -21,47 +21,47 @@ export default function Home() {
 
   // Friction in Scrolling --Start--
 
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let startY = 0;
-    let startTime = 0;
+  // useEffect(() => {
+  //   let startY = 0;
+  //   let startTime = 0;
 
-    const handleTouchStart = (e: TouchEvent) => {
-      startY = e.touches[0].clientY;
-      startTime = new Date().getTime();
-    };
+  //   const handleTouchStart = (e: TouchEvent) => {
+  //     startY = e.touches[0].clientY;
+  //     startTime = new Date().getTime();
+  //   };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      const moveY = e.touches[0].clientY;
-      const distance = moveY - startY;
-      const timeElapsed = new Date().getTime() - startTime;
+  //   const handleTouchMove = (e: TouchEvent) => {
+  //     const moveY = e.touches[0].clientY;
+  //     const distance = moveY - startY;
+  //     const timeElapsed = new Date().getTime() - startTime;
 
-      if (timeElapsed < 500) {
-        // Within 500ms
-        e.preventDefault();
+  //     if (timeElapsed < 500) {
+  //       // Within 500ms
+  //       e.preventDefault();
 
-        if (!scrollContainerRef.current) return;
+  //       if (!scrollContainerRef.current) return;
 
-        scrollContainerRef.current.scrollBy({
-          top: distance * (distance > 0 ? -0.1 : -0.1), // Different friction for up and down
-          behavior: "smooth",
-        });
-      }
-    };
+  //       scrollContainerRef.current.scrollBy({
+  //         top: distance * (distance > 0 ? -0.1 : -0.1), // Different friction for up and down
+  //         behavior: "smooth",
+  //       });
+  //     }
+  //   };
 
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-    scrollContainer.addEventListener("touchstart", handleTouchStart);
-    scrollContainer.addEventListener("touchmove", handleTouchMove);
+  //   const scrollContainer = scrollContainerRef.current;
+  //   if (!scrollContainer) return;
+  //   scrollContainer.addEventListener("touchstart", handleTouchStart);
+  //   scrollContainer.addEventListener("touchmove", handleTouchMove);
 
-    return () => {
-      scrollContainer.removeEventListener("touchstart", handleTouchStart);
-      scrollContainer.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, [scrollContainerRef.current]);
+  //   return () => {
+  //     scrollContainer.removeEventListener("touchstart", handleTouchStart);
+  //     scrollContainer.removeEventListener("touchmove", handleTouchMove);
+  //   };
+  // }, [scrollContainerRef.current]);
 
-  // Friction in Scrolling --End--
+  // // Friction in Scrolling --End--
 
   return (
     <>
@@ -87,7 +87,6 @@ export default function Home() {
           <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 sm:py-10 lg:py-8 xl:py-5 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
             <ClientOnly>
               <div
-                ref={scrollContainerRef}
                 className="overflow-x-hidden max-h-full scroll_snapping"
               >
                 {allPosts.map((post, index) => (

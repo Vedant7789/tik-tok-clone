@@ -32,7 +32,7 @@ export default function PostUser({ post }: PostUserCompTypes) {
                             muted
                             loop
                             className="aspect-[3/4] object-cover rounded-md" 
-                            src={post.video_url}
+                            src={post.video_url.replace("https://tiktok-catalyst.s3.ap-south-1.amazonaws.com", "https://99pitch.b-cdn.net")}
                         />
                     </Link>
                 )}

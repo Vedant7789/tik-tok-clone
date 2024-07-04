@@ -101,7 +101,7 @@ export default function PostMain({
             playsInline
             onClick={handleVideoClick}
             className="object-cover h-full w-full aspect-auto"
-            src={post?.video_url}
+            src={post?.video_url.replace("https://tiktok-catalyst.s3.ap-south-1.amazonaws.com", "https://99pitch.b-cdn.net")}
           />
           {showIcon && (
             <div className="absolute z-10 w-full h-full flex items-center justify-center">
@@ -260,7 +260,7 @@ export default function PostMain({
                   //   muted
                   playsInline
                   className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
-                  src={post?.video_url}
+                  src={post?.video_url.replace("https://tiktok-catalyst.s3.ap-south-1.amazonaws.com", "https://99pitch.b-cdn.net")}
                 />
                 {showIcon && (
                   <div className="absolute z-10 w-full h-full flex items-center justify-center">
