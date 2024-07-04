@@ -8,9 +8,6 @@ import { useEffect } from "react";
 import { useAppStore } from "./stores";
 import { MeshProvider, useWallet } from "@meshsdk/react";
 
-import "react-toastify/dist/ReactToastify.css";
-import { success } from "./utils/toast";
-import { ToastContainer } from "react-toastify";
 import { ModalContextProvider } from "./context/ModalContext";
 
 const metadata: Metadata = {
@@ -32,7 +29,6 @@ export default function RootLayout({
                         <body className="py-0 px-[4%] md:p-[4%]">
                             <AllOverlays />
                             {children}
-                            <ToastContainer position="top-center" theme="dark" style={{ minWidth: "400px" }} />
                         </body>
                     </ModalContextProvider>
                 </UserProvider>

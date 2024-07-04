@@ -3,6 +3,8 @@ import TopNav from "./includes/TopNav"
 import { ConnectModal } from "../components/ConnectWallet"
 import { useAppStore } from "../stores";
 import Loader from "../components/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UploadLayout({ children }: { children: React.ReactNode }) {
     const { showConnectModal, loading } = useAppStore();
@@ -15,6 +17,7 @@ export default function UploadLayout({ children }: { children: React.ReactNode }
                     {children}
                     {showConnectModal && <ConnectModal />}
                 </div>
+                <ToastContainer position="top-center" theme="dark" style={{ minWidth: "400px" }} />
             </div>
       	</>
     )

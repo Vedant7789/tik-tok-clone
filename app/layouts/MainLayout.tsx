@@ -7,6 +7,8 @@ import { useAppStore } from "../stores";
 import { success } from "../utils/toast";
 import { ConnectModal } from "../components/ConnectWallet";
 import Loader from "../components/Loader";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 export default function MainLayout({
     children,
@@ -25,6 +27,7 @@ export default function MainLayout({
                 {children}
                 {showConnectModal && <ConnectModal />}
             </div>
+            <ToastContainer position="top-center" theme="dark" style={{ minWidth: "400px" }} />
         </>
     );
 }
