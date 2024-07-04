@@ -9,7 +9,7 @@ import useCreateBucketUrl from "../hooks/useCreateBucketUrl";
 import { PostMainCompTypes } from "../types";
 import { MdWhereToVote } from "react-icons/md";
 import { BsTwitter } from "react-icons/bs";
-import { FaPlay, FaPause } from "react-icons/fa";
+import { FaPlay, FaPause, FaShare } from "react-icons/fa";
 
 export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes & { isAutoplayEnabled: boolean }) {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -96,7 +96,7 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                     </span>
                                 </Link>
                             </div>
-                            <div className="flex gap-4 items-center">
+                            <div className="flex gap-4">
                                 {post.proposal_link &&
                                     <button onClick={(e) => {
                                         e.stopPropagation();
@@ -109,12 +109,17 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                 {post.twitter_link &&
                                     <button onClick={(e) => {
                                         e.stopPropagation();
-                                        openLink(post.twitter_link)
-                                    }} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                        openLink(`https://twitter.com/intent/tweet?url=${window.origin + "/" + post.id + "/" + post.user_id}&text=Hey, We've uploaded our pitch in 99pitch`);
+                                    }} 
+                                    className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
                                         <BsTwitter className="-translate-y-[3px]" />
                                         <span className="hidden sm:inline-block">Profile</span>
                                     </button>
                                 }
+                                 <Link href={`${window.origin}/post/${post.id}/${post.user_id}`} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                        <FaShare size={15} className="mt-[-3px]"/>
+                                        <span className="hidden sm:inline-block">Share</span>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -143,11 +148,18 @@ export default function PostMain({ post, isAutoplayEnabled  }: PostMainCompTypes
                                     </button>
                                 }
                                 {post.twitter_link &&
-                                    <button onClick={() => openLink(post.twitter_link)} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
+                                    <button onClick={() => 
+                                        openLink(`https://twitter.com/intent/tweet?url=${window.origin + "/" + post.id + "/" + post.user_id}&text=Hey, We've uploaded our pitch in 99pitch`)
+                                    } 
+                                    className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300">
                                         <BsTwitter className="-translate-y-[3px]" />
                                         <span className="hidden sm:inline-block">Profile</span>
                                     </button>
                                 }
+                                <Link href={`/post/${post.id}/${post.user_id}`} className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur">
+                                        <FaShare size={15} className="mt-[-3px]"/>
+                                        <span className="hidden sm:inline-block">Share</span>
+                                </Link>
                             </div>
                         </div>
 
