@@ -69,7 +69,8 @@ export default function PostMain({
         observer.unobserve(postRef.current);
       }
     };
-  }, [postRef.current]);
+  }, [postRef.current, isAutoplayEnabled]);
+  
 
   const openLink = (url: string | null) => url && window.open(url, "_blank");
 
