@@ -21,41 +21,47 @@ export default function PostMain({
     const mobileVideoRef = useRef<HTMLVideoElement>(null);
     const [isPlaying, setIsPlaying] = useState(true);
     const [showIcon, setShowIcon] = useState(false);
-    const [currentVideo, setCurrentVideo] = useState<HTMLVideoElement | null>(null);
 
     useEffect(() => {
-        const video = document.getElementById(
-          `video-${post?.id}`
-        ) as HTMLVideoElement;
+        const video = document.getElementById(`video-${post?.id}`) as HTMLVideoElement;
         const postMainElement = document.getElementById(`PostMain-${post.id}`);
-    
-        if (postMainElement) {
-          let observer = new IntersectionObserver(
-            (entries) => {
-              if (entries[0].isIntersecting) {
-                if (currentVideo && currentVideo !== video) {
-                  currentVideo.pause();
-                  currentVideo.muted = true;
+        const allVideos = document.querySelectorAll("video");
+
+        const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    allVideos.forEach((v) => {
+                        if (v !== video) {
+                            v.muted = true;
+                            v.pause();
+                        }
+                    });
+                    video.muted = false;
+                    video.play();
+                    setIsPlaying(true);
+                } else {
+                    video.muted = true;
+                    video.pause();
+                    setIsPlaying(false);
                 }
-                video.muted = false;
-                video.play();
-                setCurrentVideo(video);
-              } else {
-                video.muted = true;
-                video.pause();
-              }
-            },
-            { threshold: [0.6] }
-          );
-    
-          observer.observe(postMainElement);
-    
-          return () => {
-            observer.disconnect();
-          };
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersection, {
+            threshold: [0.6],
+        });
+
+        if (postMainElement) {
+            observer.observe(postMainElement);
         }
-      }, [videoRef, currentVideo]);
-      
+
+        return () => {
+            if (postMainElement) {
+                observer.unobserve(postMainElement);
+            }
+        };
+    }, [post?.id]);
+
     const openLink = (url: string | null) => url && window.open(url, "_blank");
 
     const handleVideoClick = () => {
