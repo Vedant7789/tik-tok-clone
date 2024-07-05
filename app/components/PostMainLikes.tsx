@@ -93,7 +93,8 @@ export default function PostMainLikes({ post }: PostMainLikesCompTypes) {
     }
   };
 
-  const handleShareClick = () => {
+  const handleShareClick = (e:any) => {
+    e.stopPropagation();
     const currentPageUrl = `${window.location.href}post/${post?.id}/${post?.profile?.user_id}`;
     navigator.clipboard
       .writeText(currentPageUrl)

@@ -206,7 +206,8 @@ export default function PostMain({
                   )}
                   <button
                     className="rounded text-[15px] px-3 sm:px-[21px] py-0.5 bg2 text-[#ffeef2] hover:bg-[#F02C56]/50 font-semibold font-offbit-101-bold tracking-widest leading-[1] pt-3 pb-2 flex items-center gap-1 transition-all duration-300 backdrop-blur"
-                    onClick={async () => {
+                    onClick={async (e) => {
+                      e.stopPropagation();
                       toast.success("Link copied to clipboard");
                       await navigator.clipboard.writeText(
                         `${window.origin}/post/${post.id}/${post.user_id}`
