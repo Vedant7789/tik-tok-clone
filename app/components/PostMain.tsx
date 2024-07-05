@@ -108,14 +108,14 @@ export default function PostMain({
   };
 
   return (
-    <div className="relative snap_childrens h-[100dvh] md:h-full">
+    <div className="relative snap_childrens md:h-full">
       {isTabletOrMobile && (
         <div className="block md:hidden">
           <div
             ref={postRef}
             id={`PostMain-${post.id}`}
             onClick={handleMobileVideoClick}
-            className="flex border-b h-[100vh] md:h-full w-[100vw] relative"
+            className="flex border-b h-[100dvh] md:h-full w-[100vw] relative"
           >
             {videoLoding && (
               <div className="flex w-full h-full z-10 absolute top-0 left-0 justify-center items-center">
