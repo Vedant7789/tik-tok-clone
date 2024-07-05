@@ -13,6 +13,7 @@ import { FaPlay, FaPause, FaShare } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
+import { BiLoaderCircle } from "react-icons/bi";
 
 export default function PostMain({
   post,
@@ -22,6 +23,7 @@ export default function PostMain({
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showIcon, setShowIcon] = useState(false);
+  const [videoLoding, setVideoLoading] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
@@ -113,10 +115,22 @@ export default function PostMain({
             ref={postRef}
             id={`PostMain-${post.id}`}
             onClick={handleMobileVideoClick}
-            className="flex border-b h-[100vh] md:h-full w-[100vw]"
+            className="flex border-b h-[100vh] md:h-full w-[100vw] relative"
           >
+            {videoLoding && (
+              <div className="flex w-full h-full z-10 absolute top-0 left-0 justify-center items-center">
+                <BiLoaderCircle
+                  className="animate-spin"
+                  color="#ffffff"
+                  size={22}
+                />
+              </div>
+            )}
             <video
               // key={isAutoplayEnabled? "autoplay" : "noautoplay"}
+
+              onLoadStart={() => setVideoLoading(true)}
+              onLoadedData={() => setVideoLoading(false)}
               id={`video-${post.id}`}
               ref={mobileVideoRef}
               // autoPlay={isAutoplayEnabled}
@@ -209,7 +223,11 @@ export default function PostMain({
         </div>
       )}
       {!isTabletOrMobile && (
-        <div id={`PostMain-${post.id}`} className="hidden md:block">
+        <div
+          ref={postRef}
+          // id={`PostMain-${post.id}`}
+          className="hidden md:block"
+        >
           <div className="flex border-b py-6">
             <div className="pl-3 w-full px-4 font-neue-regular">
               {/* name and buttons */}
@@ -279,8 +297,19 @@ export default function PostMain({
                   className="relative aspect-[260/480] w-full min-w-[300px] max-w-[450px] flex items-center bg-black rounded-xl cursor-pointer"
                   onClick={handleVideoClick}
                 >
+                  {videoLoding && (
+                    <div className="flex w-full h-full z-10 absolute top-0 left-0 justify-center items-center">
+                      <BiLoaderCircle
+                        className="animate-spin"
+                        color="#ffffff"
+                        size={22}
+                      />
+                    </div>
+                  )}
                   <video
-                    key={isAutoplayEnabled ? "autoplay" : "noautoplay"}
+                    onLoadStart={() => setVideoLoading(true)}
+                    onLoadedData={() => setVideoLoading(false)}
+                    // key={isAutoplayEnabled ? "autoplay" : "noautoplay"}
                     id={`video-${post.id}`}
                     ref={videoRef}
                     loop
