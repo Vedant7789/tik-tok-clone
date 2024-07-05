@@ -70,7 +70,6 @@ export default function PostMain({
       }
     };
   }, [postRef.current, isAutoplayEnabled]);
-  
 
   const openLink = (url: string | null) => url && window.open(url, "_blank");
 
@@ -119,12 +118,13 @@ export default function PostMain({
             className="flex border-b h-[100dvh] md:h-full w-[100vw] relative"
           >
             {videoLoding && (
-              <div className="flex w-full h-full z-10 absolute top-0 left-0 justify-center items-center">
-                <BiLoaderCircle
+              <div className="flex w-full font-offbit h-full z-10 absolute top-0 left-0 justify-center items-center">
+                {/* <BiLoaderCircle
                   className="animate-spin"
                   color="#ffffff"
                   size={22}
-                />
+                /> */}
+                Tap to play
               </div>
             )}
             <video
@@ -193,7 +193,8 @@ export default function PostMain({
                     onClick={(e) => {
                       e.stopPropagation();
                       openLink(
-                        `https://twitter.com/intent/tweet?url=${window.origin + "/" + post.id + "/" + post.user_id
+                        `https://twitter.com/intent/tweet?url=${
+                          window.origin + "/" + post.id + "/" + post.user_id
                         }&text=Hey, We've uploaded our pitch in 99pitch`
                       );
                     }}
@@ -264,7 +265,8 @@ export default function PostMain({
                   <button
                     onClick={() =>
                       openLink(
-                        `https://twitter.com/intent/tweet?url=${window.origin + "/" + post.id + "/" + post.user_id
+                        `https://twitter.com/intent/tweet?url=${
+                          window.origin + "/" + post.id + "/" + post.user_id
                         }&text=Hey, We've uploaded our pitch in 99pitch`
                       )
                     }

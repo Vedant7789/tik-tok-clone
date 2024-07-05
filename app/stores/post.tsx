@@ -24,7 +24,7 @@ export const usePostStore = create<PostStore>()(
                 allPosts: [],
                 postsByUser: [],
                 postById: null,
-                loading: false,
+                loading: true,
 
                 setAllPosts: async () => {
                     set({ loading: true });
