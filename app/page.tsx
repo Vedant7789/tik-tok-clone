@@ -87,7 +87,7 @@ export default function Home() {
           <div className="relative w-auto h-full rounded-xl flex-1 sm:px-12 sm:py-10 lg:py-8 xl:py-5 flex flex-col max-w-[100vw] -translate-x-[4%] md:translate-x-0">
             <ClientOnly>
               <div
-                className="overflow-x-hidden max-h-full scroll_snapping"
+                className="overflow-x-hidden max-h-full scroll_snapping h-[100vh] md:h-full"
               >
                 {allPosts.map((post, index) => (
                   <>
