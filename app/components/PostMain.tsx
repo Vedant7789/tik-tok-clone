@@ -23,17 +23,14 @@ export default function PostMain({
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showIcon, setShowIcon] = useState(false);
-  const [videoLoding, setVideoLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(false);
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
 
   const postRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const video = document.getElementById(
-      `video-${post?.id}`
-    ) as HTMLVideoElement;
-    // const postMainElement = document.getElementById(`PostMain-${post.id}`);
+    const video = document.getElementById(`video-${post?.id}`) as HTMLVideoElement;
     const allVideos = document.querySelectorAll("video");
 
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
@@ -41,15 +38,14 @@ export default function PostMain({
         if (entry.isIntersecting) {
           allVideos.forEach((v) => {
             if (v !== video) {
-              // v.muted = true;
               v.pause();
             }
           });
-          video.muted = false;
-          video.play();
+          video.play().then(() => {
+            video.muted = false;
+          });
           setIsPlaying(true);
         } else {
-          video.muted = true;
           video.pause();
           setIsPlaying(false);
         }
@@ -78,12 +74,10 @@ export default function PostMain({
     if (video) {
       if (video.paused) {
         video.muted = false;
-
         video.play();
         setIsPlaying(true);
       } else {
         video.muted = true;
-
         video.pause();
         setIsPlaying(false);
       }
@@ -117,24 +111,18 @@ export default function PostMain({
             onClick={handleMobileVideoClick}
             className="flex border-b h-[100dvh] md:h-full w-[100vw] relative"
           >
-            {videoLoding && (
+            {videoLoading && (
               <div className="flex w-full font-offbit h-full z-10 absolute top-0 left-0 justify-center items-center">
-                {/* <BiLoaderCircle
-                  className="animate-spin"
-                  color="#ffffff"
-                  size={22}
-                /> */}
                 Tap to play
               </div>
             )}
             <video
-              // key={isAutoplayEnabled? "autoplay" : "noautoplay"}
-
               onLoadStart={() => setVideoLoading(true)}
               onLoadedData={() => setVideoLoading(false)}
               id={`video-${post.id}`}
               ref={mobileVideoRef}
-              // autoPlay={isAutoplayEnabled}
+              autoPlay={isAutoplayEnabled}
+              muted
               loop
               controls={false}
               playsInline
@@ -223,11 +211,7 @@ export default function PostMain({
         </div>
       )}
       {!isTabletOrMobile && (
-        <div
-          ref={postRef}
-          // id={`PostMain-${post.id}`}
-          className="hidden md:block"
-        >
+        <div ref={postRef} className="hidden md:block">
           <div className="flex border-b py-6">
             <div className="pl-3 w-full px-4 font-neue-regular">
               {/* name and buttons */}
@@ -295,7 +279,7 @@ export default function PostMain({
                   className="relative aspect-[260/480] w-full min-w-[300px] max-w-[450px] flex items-center bg-black rounded-xl cursor-pointer"
                   onClick={handleVideoClick}
                 >
-                  {videoLoding && (
+                  {videoLoading && (
                     <div className="flex w-full h-full z-10 absolute top-0 left-0 justify-center items-center">
                       <BiLoaderCircle
                         className="animate-spin"
@@ -307,12 +291,11 @@ export default function PostMain({
                   <video
                     onLoadStart={() => setVideoLoading(true)}
                     onLoadedData={() => setVideoLoading(false)}
-                    // key={isAutoplayEnabled ? "autoplay" : "noautoplay"}
                     id={`video-${post.id}`}
                     ref={videoRef}
                     loop
-                    //   autoPlay={isAutoplayEnabled}
-                    //   muted
+                    autoPlay={isAutoplayEnabled}
+                    muted
                     playsInline
                     className="absolute top-0 left-0 w-full h-full object-cover rounded-xl"
                     src={post?.video_url.replace(
