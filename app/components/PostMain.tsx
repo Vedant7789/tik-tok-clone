@@ -111,11 +111,11 @@ export default function PostMain({
             onClick={handleMobileVideoClick}
             className="flex border-b h-[100dvh] md:h-full w-[100vw] relative"
           >
-            {videoLoading && (
+            {/* {videoLoading && (
               <div className="flex w-full font-offbit h-full z-10 absolute top-0 left-0 justify-center items-center">
                 Tap to play
               </div>
-            )}
+            )} */}
             <video
               onLoadStart={() => setVideoLoading(true)}
               onLoadedData={() => setVideoLoading(false)}
