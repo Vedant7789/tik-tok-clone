@@ -79,7 +79,7 @@ export default function TopNav() {
                 >
                     <Link className="min-w-[115px] font-neue-regular text-xl md:text-4xl md:flex-1 md:w-full shadow-2xl shadow-black relative -translate-y-1 " href="/">
                         {/* <img className="min-w-[115px] w-[115px]" src="/images/logo.png" /> */}
-                        99pitch
+                        CardanoSwipe
 
                         <div className="absolute top-[60%] md:top-[90%] left-0 md:left-1 text-[10px] md:text-xs ">
                             by Trivolve Tech
