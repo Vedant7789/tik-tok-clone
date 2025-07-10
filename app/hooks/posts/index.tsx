@@ -28,7 +28,7 @@ const useCreatePost = async (
 
       try {
         const response = await axios.post(
-          " http://localhost:8082/api/upload",
+          "https://cardanoswipe-upload-t9zf8.ondigitalocean.app/api/upload",
           {
             file: base64Data,
             fileName: videoId,
