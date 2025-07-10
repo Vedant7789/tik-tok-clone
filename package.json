@@ -9,8 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@meshsdk/core": "^1.5.7-beta.1",
-    "@meshsdk/react": "github:stargazerlabs/mesh-react",
+    "@meshsdk/core": "1.5.7-beta.1",
+    "@meshsdk/react": "1.1.7",
+    "@sidan-lab/sidan-csl-rs-browser": "^0.9.21",
     "@supabase/supabase-js": "^2.44.2",
     "@types/node": "20.5.1",
     "@types/react": "18.2.20",
