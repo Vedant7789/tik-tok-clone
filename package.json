@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint"
   },
+  
+
   "dependencies": {
     "@meshsdk/core": "^1.5.7-beta.1",
     "@meshsdk/react": "github:stargazerlabs/mesh-react",
@@ -39,7 +41,6 @@
   "devDependencies": {
     "@types/debounce": "^1.2.1",
     "@types/react-responsive": "^8.0.8",
-    "canvas": "^2.11.2",
     "raw-loader": "^4.0.2"
   },
   "packageManager": "pnpm@8.15.2+sha512.0ad484913902bbfe73988ef3d8d1c510aeb0c65483babdc40589c1a6635cf86039bc3639bde39d14a3cc9e0271e7fad1c7fa891c47ca7c7f1eb06bffdcc3939f"
