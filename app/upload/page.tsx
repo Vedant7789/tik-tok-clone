@@ -81,7 +81,7 @@ export default function Upload() {
 
   const validate = () => {
     let catalyst_expression =
-      /\bhttps?:\/\/(?:[a-zA-Z0-9-]+\.)?cardano\.ideascale\.com(?:\/\S*)?\b/;
+      /\bhttps?:\/\/(?:[a-zA-Z0-9-]+\.)?(cardano\.ideascale\.com|projectcatalyst\.io)(?:\/\S*)?\b/;
     let twitter_expression =
       /^(https?:\/\/)?([\w-]+\.)?(x\.com|twitter\.com)(\/\S*)?$/;
 

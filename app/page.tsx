@@ -90,13 +90,12 @@ export default function Home() {
                 className="overflow-x-hidden max-h-full scroll_snapping h-[100vh] md:h-full"
               >
                 {allPosts.map((post, index) => (
-                  <>
+                  <div key={index}>
                     <PostMain
                       isAutoplayEnabled={!isModalVisible}
                       post={post}
-                      key={index}
                     />
-                  </>
+                  </div>
                 ))}
               </div>
             </ClientOnly>
